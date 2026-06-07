@@ -420,3 +420,65 @@ loadSeries();
 loadAnime();
 loadGames();
 loadCartoons();
+
+// TEST ACTORS
+
+const actors = [
+
+{
+name:"Prabhas",
+country:"🇮🇳 India",
+known:"Baahubali, Salaar, Kalki 2898 AD",
+image:"https://upload.wikimedia.org/wikipedia/commons/5/5f/Prabhas_at_Radhe_Shyam_event.jpg"
+},
+
+{
+name:"Shah Rukh Khan",
+country:"🇮🇳 India",
+known:"Pathaan, Jawan, Chennai Express",
+image:"https://upload.wikimedia.org/wikipedia/commons/c/c3/Shah_Rukh_Khan.jpg"
+},
+
+{
+name:"Allu Arjun",
+country:"🇮🇳 India",
+known:"Pushpa, Ala Vaikunthapurramuloo",
+image:"https://upload.wikimedia.org/wikipedia/commons/5/5b/Allu_Arjun.jpg"
+},
+
+{
+name:"Tom Cruise",
+country:"🇺🇸 USA",
+known:"Mission Impossible, Top Gun",
+image:"https://image.tmdb.org/t/p/w500/3oWEuo0e8Nx8JvkqYCDec2iMY6K.jpg"
+}
+
+];
+
+const actorsRow = document.getElementById("actorsRow");
+
+actors.forEach(actor => {
+
+actorsRow.innerHTML += `
+
+<div class="card">
+
+<img src="${actor.image}" alt="${actor.name}">
+
+<div class="card-info">
+
+<h3>${actor.name}</h3>
+
+<p>${actor.country}</p>
+
+<p><strong>Known For:</strong></p>
+
+<p>${actor.known}</p>
+
+</div>
+
+</div>
+
+`;
+
+});

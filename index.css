@@ -329,6 +329,8 @@ margin-bottom:10px;
 .card-info p{
 font-size:.9rem;
 color:#bbb;
+line-height:1.5;
+margin-top:5px;
 }
 
 /* =========================
