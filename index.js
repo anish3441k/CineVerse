@@ -433,34 +433,6 @@ document.getElementById("actorsRow");
 
 actorsRow.innerHTML = "";
 
-/* FIXED INDIAN ACTORS */
-
-const indianActors = [
-
-{
-name:"Prabhas",
-country:"🇮🇳 India",
-known:"Baahubali, Salaar, Kalki 2898 AD",
-photo:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500"
-},
-
-{
-name:"Shah Rukh Khan",
-country:"🇮🇳 India",
-known:"Pathaan, Jawan, Don",
-photo:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500"
-},
-
-{
-name:"Allu Arjun",
-country:"🇮🇳 India",
-known:"Pushpa, Ala Vaikunthapurramuloo",
-photo:"https://images.unsplash.com/photo-150459
-}
-
-];
-
-/* ADD FIXED INDIANS */
 
 indianActors.forEach(actor=>{
 
