@@ -1,87 +1,67 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CineVerse</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-```
-<link rel="stylesheet" href="css/home.css">
+<title>CineVerse</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-```
+<link rel="stylesheet" href="index.css">
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-```
-<!-- Sidebar Overlay -->
+<!-- OVERLAY -->
+
 <div class="overlay" id="overlay"></div>
 
-<!-- Sidebar -->
-<aside class="sidebar" id="sidebar">
+<!-- SIDEBAR -->
 
-    <div class="sidebar-header">
-        <div class="sidebar-logo">
-            🌌 CineVerse
-        </div>
+<div class="sidebar" id="sidebar">
+
+    <div class="sidebar-logo">
+        🎬 CineVerse
     </div>
 
-    <div class="sidebar-links">
+    <ul>
 
-        <a href="#" class="active-link">
-            🏠 Home
-        </a>
+        <li>🏠 Home</li>
 
-        <a href="#">
-            🎬 Movies
-        </a>
+        <li>🎬 Movies</li>
 
-        <a href="#">
-            📺 Web Series
-        </a>
+        <li>📺 Web Series</li>
 
-        <a href="#">
-            🍿 Anime
-        </a>
+        <li>🍿 Anime</li>
 
-        <a href="#">
-            🎨 Cartoons
-        </a>
+        <li>🎨 Cartoons</li>
 
-        <a href="#">
-            🎮 Games
-        </a>
+        <li>🎮 Games</li>
 
-        <div class="sidebar-divider"></div>
+        <hr>
 
-        <a href="#">
-            ❤️ Wishlist
-        </a>
+        <li>❤️ Wishlist</li>
 
-        <a href="#">
-            ⚙️ Settings
-        </a>
+        <li>⚙️ Settings</li>
 
-    </div>
+    </ul>
 
-</aside>
+</div>
 
-<!-- Navbar -->
+<!-- NAVBAR -->
 
 <header class="navbar">
 
     <div class="nav-left">
 
-        <button class="menu-btn" id="menuBtn">
+        <button id="menuBtn" class="menu-btn">
             ☰
         </button>
 
         <div class="logo">
-            🌌 CineVerse
+            🎬 CineVerse
         </div>
 
     </div>
@@ -91,11 +71,11 @@
         <div class="search-box">
 
             <input
-                type="text"
-                placeholder="Search Universe..."
-                id="searchInput">
+            type="text"
+            placeholder="Search Universe..."
+            id="searchInput">
 
-            <button id="searchBtn">
+            <button>
                 🔍
             </button>
 
@@ -113,122 +93,136 @@
 
 </header>
 
-<!-- Hero Banner -->
+<!-- HERO -->
 
-<section class="hero-section">
+<section class="hero-slider" id="heroSlider">
 
-    <div class="hero-slider">
+    <div class="hero-content">
 
-        <div class="hero-content">
+        <span class="hero-tag">
+            WORLDWIDE TRENDING
+        </span>
 
-            <span class="hero-badge">
-                WORLDWIDE TRENDING
+        <h1 id="heroTitle">
+            Loading...
+        </h1>
+
+        <p id="heroDescription">
+            Loading...
+        </p>
+
+        <div class="hero-info">
+
+            <span id="heroType">
+                Movie
             </span>
 
-            <h1 id="heroTitle">
-                Loading...
-            </h1>
-
-            <p id="heroDescription">
-                Loading...
-            </p>
-
-            <div class="hero-info">
-
-                <span id="heroType">
-                    Movie
-                </span>
-
-                <span id="heroRating">
-                    ⭐ 0
-                </span>
-
-            </div>
-
-            <div class="hero-buttons">
-
-                <button class="primary-btn">
-                    View Details
-                </button>
-
-                <button class="secondary-btn">
-                    Add Wishlist
-                </button>
-
-            </div>
+            <span id="heroRating">
+                ⭐ 0
+            </span>
 
         </div>
 
-        <button class="slider-btn prev-btn">
-            ❮
-        </button>
+        <div class="hero-buttons">
 
-        <button class="slider-btn next-btn">
-            ❯
-        </button>
+            <button class="primary-btn">
+                View Details
+            </button>
 
+            <button class="secondary-btn">
+                Add Wishlist
+            </button>
+
+        </div>
+
+    </div>
+
+    <button class="slider-btn prev-btn">
+        ❮
+    </button>
+
+    <button class="slider-btn next-btn">
+        ❯
+    </button>
+
+</section>
+
+<!-- MOVIES -->
+
+<section class="content-section">
+
+    <h2>
+        🎬 Trending Movies
+    </h2>
+
+    <div
+    class="card-row"
+    id="moviesRow">
     </div>
 
 </section>
 
-<!-- Actors -->
+<!-- WEB SERIES -->
 
-<section class="section">
+<section class="content-section">
 
-    <div class="section-header">
+    <h2>
+        📺 Trending Web Series
+    </h2>
 
-        <h2>
-            🌟 Famous Actors & Actresses
-        </h2>
-
-    </div>
-
-    <div class="cards-row" id="actorsRow">
-
+    <div
+    class="card-row"
+    id="seriesRow">
     </div>
 
 </section>
 
-<!-- Directors -->
+<!-- ANIME -->
 
-<section class="section">
+<section class="content-section">
 
-    <div class="section-header">
+    <h2>
+        🍿 Trending Anime
+    </h2>
 
-        <h2>
-            🎬 Famous Directors
-        </h2>
-
-    </div>
-
-    <div class="cards-row" id="directorsRow">
-
+    <div
+    class="card-row"
+    id="animeRow">
     </div>
 
 </section>
 
-<!-- Musicians -->
+<!-- CARTOONS -->
 
-<section class="section">
+<section class="content-section">
 
-    <div class="section-header">
+    <h2>
+        🎨 Trending Cartoons
+    </h2>
 
-        <h2>
-            🎵 Famous Musicians
-        </h2>
-
-    </div>
-
-    <div class="cards-row" id="musiciansRow">
-
+    <div
+    class="card-row"
+    id="cartoonRow">
     </div>
 
 </section>
 
-<script src="api/config.js"></script>
-<script src="js/home.js"></script>
-```
+<!-- GAMES -->
+
+<section class="content-section">
+
+    <h2>
+        🎮 Trending Games
+    </h2>
+
+    <div
+    class="card-row"
+    id="gamesRow">
+    </div>
+
+</section>
+
+<script src="index.js"></script>
 
 </body>
-
 </html>
