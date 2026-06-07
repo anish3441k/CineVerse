@@ -489,3 +489,119 @@ console.log(err);
 }
 
 }
+
+async function loadDirectors(){
+
+const directorsRow =
+document.getElementById("directorsRow");
+
+const directors = [
+
+{name:"S. S. Rajamouli",country:"🇮🇳 India",known:"RRR, Baahubali"},
+{name:"Christopher Nolan",country:"🇬🇧 United Kingdom",known:"Interstellar, Oppenheimer"},
+{name:"James Cameron",country:"🇨🇦 Canada",known:"Avatar, Titanic"},
+{name:"Steven Spielberg",country:"🇺🇸 USA",known:"Jurassic Park, Jaws"},
+{name:"Quentin Tarantino",country:"🇺🇸 USA",known:"Pulp Fiction"},
+{name:"Martin Scorsese",country:"🇺🇸 USA",known:"The Departed"},
+{name:"Peter Jackson",country:"🇳🇿 New Zealand",known:"Lord of the Rings"},
+{name:"Denis Villeneuve",country:"🇨🇦 Canada",known:"Dune"},
+{name:"Ridley Scott",country:"🇬🇧 United Kingdom",known:"Gladiator"},
+{name:"David Fincher",country:"🇺🇸 USA",known:"Fight Club"},
+{name:"Guy Ritchie",country:"🇬🇧 United Kingdom",known:"Sherlock Holmes"},
+{name:"George Lucas",country:"🇺🇸 USA",known:"Star Wars"},
+{name:"Tim Burton",country:"🇺🇸 USA",known:"Batman"},
+{name:"Francis Ford Coppola",country:"🇺🇸 USA",known:"The Godfather"},
+{name:"Zack Snyder",country:"🇺🇸 USA",known:"Justice League"},
+{name:"Jon Favreau",country:"🇺🇸 USA",known:"Iron Man"},
+{name:"Sukumar",country:"🇮🇳 India",known:"Pushpa"},
+{name:"Lokesh Kanagaraj",country:"🇮🇳 India",known:"Leo, Vikram"},
+{name:"Sanjay Leela Bhansali",country:"🇮🇳 India",known:"Padmaavat"},
+{name:"Mani Ratnam",country:"🇮🇳 India",known:"Ponniyin Selvan"}
+
+];
+
+directors.forEach(person=>{
+
+directorsRow.innerHTML += `
+
+<div class="card">
+
+<img src="https://picsum.photos/400/600?random=${Math.random()}">
+
+<div class="card-info">
+
+<h3>${person.name}</h3>
+
+<p>${person.country}</p>
+
+<p><strong>Known For:</strong></p>
+
+<p>${person.known}</p>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+async function loadMusicians(){
+
+const musiciansRow =
+document.getElementById("musiciansRow");
+
+const musicians = [
+
+{name:"A. R. Rahman",country:"🇮🇳 India",known:"Slumdog Millionaire"},
+{name:"Anirudh Ravichander",country:"🇮🇳 India",known:"Leo, Jailer"},
+{name:"Devi Sri Prasad",country:"🇮🇳 India",known:"Pushpa"},
+{name:"S. Thaman",country:"🇮🇳 India",known:"Akhanda"},
+{name:"Hans Zimmer",country:"🇩🇪 Germany",known:"Interstellar"},
+{name:"John Williams",country:"🇺🇸 USA",known:"Star Wars"},
+{name:"Ludwig Göransson",country:"🇸🇪 Sweden",known:"Oppenheimer"},
+{name:"Alan Walker",country:"🇳🇴 Norway",known:"Faded"},
+{name:"The Weeknd",country:"🇨🇦 Canada",known:"Blinding Lights"},
+{name:"Taylor Swift",country:"🇺🇸 USA",known:"Cruel Summer"},
+{name:"Ed Sheeran",country:"🇬🇧 United Kingdom",known:"Shape of You"},
+{name:"Eminem",country:"🇺🇸 USA",known:"Lose Yourself"},
+{name:"Adele",country:"🇬🇧 United Kingdom",known:"Hello"},
+{name:"Bruno Mars",country:"🇺🇸 USA",known:"Uptown Funk"},
+{name:"Billie Eilish",country:"🇺🇸 USA",known:"Bad Guy"},
+{name:"Imagine Dragons",country:"🇺🇸 USA",known:"Believer"},
+{name:"Marshmello",country:"🇺🇸 USA",known:"Alone"},
+{name:"David Guetta",country:"🇫🇷 France",known:"Titanium"},
+{name:"Coldplay",country:"🇬🇧 United Kingdom",known:"Yellow"},
+{name:"Linkin Park",country:"🇺🇸 USA",known:"Numb"}
+
+];
+
+musicians.forEach(person=>{
+
+musiciansRow.innerHTML += `
+
+<div class="card">
+
+<img src="https://picsum.photos/400/600?random=${Math.random()}">
+
+<div class="card-info">
+
+<h3>${person.name}</h3>
+
+<p>${person.country}</p>
+
+<p><strong>Known For:</strong></p>
+
+<p>${person.known}</p>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
