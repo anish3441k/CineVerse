@@ -433,35 +433,6 @@ document.getElementById("actorsRow");
 
 actorsRow.innerHTML = "";
 
-
-indianActors.forEach(actor=>{
-
-actorsRow.innerHTML += `
-
-<div class="card">
-
-<img src="${actor.photo}">
-
-<div class="card-info">
-
-<h3>${actor.name}</h3>
-
-<p>${actor.country}</p>
-
-<p><strong>Known For:</strong></p>
-
-<p>${actor.known}</p>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-/* TMDB CELEBRITIES */
-
 try{
 
 const res = await fetch(
@@ -470,7 +441,17 @@ const res = await fetch(
 
 const data = await res.json();
 
-data.results.slice(0,17).forEach(person=>{
+data.results
+.slice(0,20)
+.forEach(person=>{
+
+const knownFor =
+person.known_for
+?.map(item =>
+item.title || item.name
+)
+.join(", ")
+|| "Entertainment";
 
 actorsRow.innerHTML += `
 
@@ -489,12 +470,7 @@ alt="${person.name}"
 
 <p><strong>Known For:</strong></p>
 
-<p>
-${person.known_for
-?.map(item => item.title || item.name)
-.join(", ")
-|| "Entertainment"}
-</p>
+<p>${knownFor}</p>
 
 </div>
 
