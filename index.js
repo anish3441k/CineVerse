@@ -441,21 +441,21 @@ const indianActors = [
 name:"Prabhas",
 country:"🇮🇳 India",
 known:"Baahubali, Salaar, Kalki 2898 AD",
-photo:"https://picsum.photos/400/600?random=101"
+photo:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500"
 },
 
 {
 name:"Shah Rukh Khan",
 country:"🇮🇳 India",
 known:"Pathaan, Jawan, Don",
-photo:"https://picsum.photos/400/600?random=102"
+photo:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500"
 },
 
 {
 name:"Allu Arjun",
 country:"🇮🇳 India",
 known:"Pushpa, Ala Vaikunthapurramuloo",
-photo:"https://picsum.photos/400/600?random=103"
+photo:"https://images.unsplash.com/photo-150459
 }
 
 ];
