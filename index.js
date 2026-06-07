@@ -441,21 +441,21 @@ const indianActors = [
 name:"Prabhas",
 country:"🇮🇳 India",
 known:"Baahubali, Salaar, Kalki 2898 AD",
-photo:"https://image.tmdb.org/t/p/w500/qJxzjUjCpTPvDHldNnlbRC4OqEh.jpg"
+photo:"https://picsum.photos/400/600?random=101"
 },
 
 {
 name:"Shah Rukh Khan",
 country:"🇮🇳 India",
 known:"Pathaan, Jawan, Don",
-photo:"https://image.tmdb.org/t/p/w500/tbIWQKjJ6LhQ7rJ8jYVQF6n5m5H.jpg"
+photo:"https://picsum.photos/400/600?random=102"
 },
 
 {
 name:"Allu Arjun",
 country:"🇮🇳 India",
 known:"Pushpa, Ala Vaikunthapurramuloo",
-photo:"https://image.tmdb.org/t/p/w500/yL8x9KzP6mF5lWzB9YxV5gW2xQ4.jpg"
+photo:"https://picsum.photos/400/600?random=103"
 }
 
 ];
@@ -515,9 +515,14 @@ alt="${person.name}"
 
 <p>🌍 Global Celebrity</p>
 
-<p><strong>Popularity:</strong></p>
+<p><strong>Known For:</strong></p>
 
-<p>${Math.round(person.popularity)}</p>
+<p>
+${person.known_for
+?.map(item => item.title || item.name)
+.join(", ")
+|| "Entertainment"}
+</p>
 
 </div>
 
