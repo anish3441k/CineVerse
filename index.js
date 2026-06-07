@@ -420,50 +420,55 @@ loadSeries();
 loadAnime();
 loadGames();
 loadCartoons();
+loadActors();
 
-// TEST ACTORS
+/* =========================
+   GLOBAL SUPERSTARS
+========================= */
 
-const actors = [
+async function loadActors(){
+
+const actorsRow =
+document.getElementById("actorsRow");
+
+actorsRow.innerHTML = "";
+
+/* FIXED INDIAN ACTORS */
+
+const indianActors = [
 
 {
 name:"Prabhas",
 country:"🇮🇳 India",
 known:"Baahubali, Salaar, Kalki 2898 AD",
-image:"https://upload.wikimedia.org/wikipedia/commons/5/5f/Prabhas_at_Radhe_Shyam_event.jpg"
+photo:"https://image.tmdb.org/t/p/w500/qJxzjUjCpTPvDHldNnlbRC4OqEh.jpg"
 },
 
 {
 name:"Shah Rukh Khan",
 country:"🇮🇳 India",
-known:"Pathaan, Jawan, Chennai Express",
-image:"https://upload.wikimedia.org/wikipedia/commons/c/c3/Shah_Rukh_Khan.jpg"
+known:"Pathaan, Jawan, Don",
+photo:"https://image.tmdb.org/t/p/w500/tbIWQKjJ6LhQ7rJ8jYVQF6n5m5H.jpg"
 },
 
 {
 name:"Allu Arjun",
 country:"🇮🇳 India",
 known:"Pushpa, Ala Vaikunthapurramuloo",
-image:"https://upload.wikimedia.org/wikipedia/commons/5/5b/Allu_Arjun.jpg"
-},
-
-{
-name:"Tom Cruise",
-country:"🇺🇸 USA",
-known:"Mission Impossible, Top Gun",
-image:"https://image.tmdb.org/t/p/w500/3oWEuo0e8Nx8JvkqYCDec2iMY6K.jpg"
+photo:"https://image.tmdb.org/t/p/w500/yL8x9KzP6mF5lWzB9YxV5gW2xQ4.jpg"
 }
 
 ];
 
-const actorsRow = document.getElementById("actorsRow");
+/* ADD FIXED INDIANS */
 
-actors.forEach(actor => {
+indianActors.forEach(actor=>{
 
 actorsRow.innerHTML += `
 
 <div class="card">
 
-<img src="${actor.image}" alt="${actor.name}">
+<img src="${actor.photo}">
 
 <div class="card-info">
 
@@ -482,3 +487,52 @@ actorsRow.innerHTML += `
 `;
 
 });
+
+/* TMDB CELEBRITIES */
+
+try{
+
+const res = await fetch(
+`https://api.themoviedb.org/3/person/popular?api_key=${TMDB_API_KEY}`
+);
+
+const data = await res.json();
+
+data.results.slice(0,17).forEach(person=>{
+
+actorsRow.innerHTML += `
+
+<div class="card">
+
+<img
+src="https://image.tmdb.org/t/p/w500${person.profile_path}"
+alt="${person.name}"
+>
+
+<div class="card-info">
+
+<h3>${person.name}</h3>
+
+<p>🌍 Global Celebrity</p>
+
+<p><strong>Popularity:</strong></p>
+
+<p>${Math.round(person.popularity)}</p>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+catch(err){
+
+console.log(err);
+
+}
+
+}
