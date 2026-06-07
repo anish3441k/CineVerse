@@ -421,6 +421,8 @@ loadAnime();
 loadGames();
 loadCartoons();
 loadActors();
+loadDirectors();
+loadMusicians();
 
 /* =========================
    GLOBAL SUPERSTARS
