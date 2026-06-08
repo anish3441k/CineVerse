@@ -533,7 +533,7 @@ directorsRow.innerHTML += `
 
 <div class="card">
 
-<img src="${person.photo}">
+<img src="https://picsum.photos/400/600?random=${Math.random()}">
 
 <div class="card-info">
 
@@ -591,7 +591,7 @@ musiciansRow.innerHTML += `
 
 <div class="card">
 
-<img src="${person.photo}">
+<img src="https://picsum.photos/400/600?random=${Math.random()}">
 
 <div class="card-info">
 
