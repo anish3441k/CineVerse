@@ -499,7 +499,12 @@ document.getElementById("directorsRow");
 
 const directors = [
 
-{name:"S. S. Rajamouli",country:"🇮🇳 India",known:"RRR, Baahubali"},
+{
+name:"S. S. Rajamouli",
+country:"🇮🇳 India",
+known:"RRR, Baahubali",
+photo:"https://upload.wikimedia.org/wikipedia/commons/9/9b/S._S._Rajamouli.jpg"
+}
 {name:"Christopher Nolan",country:"🇬🇧 United Kingdom",known:"Interstellar, Oppenheimer"},
 {name:"James Cameron",country:"🇨🇦 Canada",known:"Avatar, Titanic"},
 {name:"Steven Spielberg",country:"🇺🇸 USA",known:"Jurassic Park, Jaws"},
@@ -528,7 +533,7 @@ directorsRow.innerHTML += `
 
 <div class="card">
 
-<img src="https://picsum.photos/400/600?random=${Math.random()}">
+<img src="${person.photo}">
 
 <div class="card-info">
 
