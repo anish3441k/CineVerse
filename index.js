@@ -394,13 +394,6 @@ async function loadGames(){
 
 async function loadCartoons(){
 
-    const row =
-    document.getElementById(
-    "cartoonRow"
-    );
-
-  async function loadCartoons(){
-
 try{
 
 const res = await fetch(
@@ -445,9 +438,7 @@ alt="${cartoon.title}"
 
 catch(err){
 
-console.log(err);
-
-}
+console.log("Cartoon Error:", err);
 
 }
 
