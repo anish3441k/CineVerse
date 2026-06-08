@@ -399,14 +399,57 @@ async function loadCartoons(){
     "cartoonRow"
     );
 
-    row.innerHTML = `
-    <div class="card">
-        <div class="card-info">
-        <h3>Coming Soon</h3>
-        <p>Cartoon API Setup Next</p>
-        </div>
-    </div>
-    `;
+  async function loadCartoons(){
+
+try{
+
+const res = await fetch(
+`https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_genres=16&sort_by=popularity.desc`
+);
+
+const data = await res.json();
+
+const row =
+document.getElementById("cartoonRow");
+
+row.innerHTML = "";
+
+data.results
+.slice(0,10)
+.forEach(cartoon=>{
+
+row.innerHTML += `
+
+<div class="card">
+
+<img
+src="https://image.tmdb.org/t/p/w500${cartoon.poster_path}"
+alt="${cartoon.title}"
+>
+
+<div class="card-info">
+
+<h3>${cartoon.title}</h3>
+
+<p>⭐ ${cartoon.vote_average}</p>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+catch(err){
+
+console.log(err);
+
+}
+
+}
 
 }
 
