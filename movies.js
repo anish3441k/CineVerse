@@ -2,7 +2,7 @@
    API
 ========================= */
 
-const TMDB_API_KEY = "PASTE_YOUR_TMDB_API_KEY";
+const TMDB_API_KEY = "6a782c30983b74d5e01dbab7cf128327";
 
 /* =========================
    SIDEBAR
