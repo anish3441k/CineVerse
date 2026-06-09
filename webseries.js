@@ -70,7 +70,9 @@ const data =
 await res.json();
 
 heroItems =
-data.results.slice(0,6);
+data.results.filter(
+item => item.backdrop_path
+).slice(0,6);
 
 updateHero();
 
@@ -110,6 +112,8 @@ heroType.textContent =
 heroRating.textContent =
 `⭐ ${item.vote_average}`;
 
+if(item.backdrop_path){
+
 heroSlider.style.backgroundImage =
 `
 linear-gradient(
@@ -117,10 +121,9 @@ linear-gradient(
 rgba(0,0,0,.95),
 rgba(0,0,0,.35)
 ),
-url(
-https://image.tmdb.org/t/p/original${item.backdrop_path}
-)
+url(https://image.tmdb.org/t/p/original${item.backdrop_path})
 `;
+
 
 }
 
