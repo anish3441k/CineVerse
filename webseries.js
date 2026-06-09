@@ -138,16 +138,24 @@ updateHero();
 
 }
 
-document
-.querySelector(".next-btn")
-.addEventListener(
+const nextBtn =
+document.querySelector(".next-btn");
+
+const prevBtn =
+document.querySelector(".prev-btn");
+
+if(nextBtn){
+
+nextBtn.addEventListener(
 "click",
 nextSlide
 );
 
-document
-.querySelector(".prev-btn")
-.addEventListener(
+}
+
+if(prevBtn){
+
+prevBtn.addEventListener(
 "click",
 ()=>{
 
@@ -164,6 +172,8 @@ updateHero();
 
 }
 );
+
+}
 
 /* =========================
    CARD
@@ -238,6 +248,11 @@ await res.json();
 
 const row =
 document.getElementById(rowId);
+
+if(!row){
+console.log("Missing Row:", rowId);
+return;
+}
 
 row.innerHTML =
 data.results
