@@ -363,7 +363,11 @@ document.getElementById("upcomingRow");
 
 row.innerHTML =
 data.results
-.filter(series => series.first_air_date >= "2025-01-01")
+.filter(series => {
+const today = new Date().toISOString().split("T")[0];
+return series.first_air_date > today;
+})
+
 .slice(0,20)
 .map(createUpcomingSeriesCard)
 .join("");
