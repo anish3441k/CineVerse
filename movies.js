@@ -235,67 +235,119 @@ console.log(err);
 
 loadHeroContent();
 
+/* Trending */
+
 loadCategory(
 `https://api.themoviedb.org/3/trending/movie/week?api_key=${TMDB_API_KEY}`,
 "trendingRow"
 );
+
+/* Action */
 
 loadCategory(
 `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_genres=28`,
 "actionRow"
 );
 
+/* Adventure */
+
 loadCategory(
 `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_genres=12`,
 "adventureRow"
 );
+
+/* Sci-Fi */
 
 loadCategory(
 `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_genres=878`,
 "scifiRow"
 );
 
+/* Horror */
+
 loadCategory(
 `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_genres=27`,
 "horrorRow"
 );
+
+/* Fantasy */
 
 loadCategory(
 `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_genres=14`,
 "fantasyRow"
 );
 
+/* Comedy */
+
 loadCategory(
 `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_genres=35`,
 "comedyRow"
 );
+
+/* Thriller */
 
 loadCategory(
 `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_genres=53`,
 "thrillerRow"
 );
 
+/* Romance */
+
 loadCategory(
 `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_genres=10749`,
 "romanceRow"
 );
 
+/* Mystery */
+
 loadCategory(
-`https://api.themoviedb.org/3/movie/top_rated?api_key=${TMDB_API_KEY}`,
+`https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_genres=9648`,
+"mysteryRow"
+);
+
+/* Crime */
+
+loadCategory(
+`https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_genres=80`,
+"crimeRow"
+);
+
+/* Family */
+
+loadCategory(
+`https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_genres=10751`,
+"familyRow"
+);
+
+/* Hollywood Top Rated */
+
+loadCategory(
+`https://api.themoviedb.org/3/movie/top_rated?api_key=${TMDB_API_KEY}&with_original_language=en`,
 "hollywoodRow"
 );
 
+/* Indian Movies */
+
 loadCategory(
-`https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_original_language=hi`,
+`https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_origin_country=IN`,
 "indianRow"
 );
+
+/* Worldwide Top Rated */
 
 loadCategory(
 `https://api.themoviedb.org/3/movie/top_rated?api_key=${TMDB_API_KEY}`,
 "worldRow"
 );
 
+/* Upcoming Movies */
+
+const today =
+new Date()
+.toISOString()
+.split("T")[0];
+
 loadCategory(
-`https://api.themoviedb.org/3/movie/upcoming?api_key=${TMDB_API_KEY}`,
+`https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&primary_release_date.gte=${today}&sort_by=primary_release_date.asc`,
 "upcomingRow"
 );
