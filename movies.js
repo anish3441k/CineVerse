@@ -348,6 +348,6 @@ new Date()
 .split("T")[0];
 
 loadCategory(
-`https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&primary_release_date.gte=${today}&sort_by=primary_release_date.asc`,
+`https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&primary_release_date.gte=${today}&sort_by=popularity.desc&vote_count.gte=50`,
 "upcomingRow"
 );
