@@ -345,6 +345,26 @@ font-size:.9rem;
 color:#bbb;
 }
 
+/* ADD HERE */
+
+.section-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}
+
+.see-all{
+text-decoration:none;
+color:#ff7b4d;
+font-weight:600;
+transition:.3s;
+}
+
+.see-all:hover{
+color:white;
+}
+
 /* =========================
    MOBILE
 ========================= */
