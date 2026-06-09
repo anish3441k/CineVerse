@@ -337,7 +337,7 @@ async function loadUpcomingSeries(){
 
 const res =
 await fetch(
-`https://api.themoviedb.org/3/tv/airing_today?api_key=${TMDB_API_KEY}`
+https://api.themoviedb.org/3/tv/on_the_air?api_key=${TMDB_API_KEY}
 );
 
 const data =
@@ -348,6 +348,7 @@ document.getElementById("upcomingRow");
 
 row.innerHTML =
 data.results
+.filter(series => series.first_air_date >= "2025-01-01")
 .slice(0,20)
 .map(createUpcomingSeriesCard)
 .join("");
