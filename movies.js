@@ -342,7 +342,12 @@ loadCategory(
 
 /* Upcoming Movies */
 
+const today =
+new Date()
+.toISOString()
+.split("T")[0];
+
 loadCategory(
-`https://api.themoviedb.org/3/movie/upcoming?api_key=${TMDB_API_KEY}`,
+`https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&primary_release_date.gte=${today}&sort_by=popularity.desc`,
 "upcomingRow"
 );
