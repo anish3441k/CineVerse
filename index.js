@@ -119,7 +119,7 @@ animeData.data
 heroItems.push({
 
 title:anime.title,
-overview:anime.synopsis || "Top Anime",
+overview:"",
 vote_average:anime.score || 8,
 backdrop_path:null,
 image:anime.images.jpg.large_image_url,
@@ -209,7 +209,9 @@ heroTitle.textContent =
 item.title || item.name;
 
 heroDescription.textContent =
-item.overview || "";
+(item.contentType === "🍿 Anime")
+? ""
+: (item.overview || "");
 
 heroType.textContent =
 item.contentType;
