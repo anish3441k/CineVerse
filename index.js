@@ -478,8 +478,18 @@ const res = await fetch(
 const data = await res.json();
 
 data.results
-.slice(0,20)
-.forEach(person=>{
+.filter(item =>
+
+!item.title?.includes("Demon Slayer") &&
+!item.title?.includes("Naruto") &&
+!item.title?.includes("One Piece") &&
+!item.title?.includes("Dragon Ball") &&
+!item.title?.includes("Jujutsu") &&
+!item.title?.includes("Attack on Titan")
+
+)
+.slice(0,10)
+.forEach(cartoon=>{
 
 const knownFor =
 person.known_for
