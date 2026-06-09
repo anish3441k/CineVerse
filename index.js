@@ -478,8 +478,8 @@ const res = await fetch(
 const data = await res.json();
 
 data.results
-.slice(0,10)
-.forEach(cartoon=>{
+.slice(0,20)
+.forEach(person=>{
 
 const knownFor =
 person.known_for
