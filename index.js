@@ -68,56 +68,129 @@ let currentSlide = 0;
 
 async function loadHeroContent() {
 
-    try {
+try {
 
-        const movieRes =
-        await fetch(
-        `https://api.themoviedb.org/3/trending/movie/week?api_key=${TMDB_API_KEY}`
-        );
+heroItems = [];
 
-        const movieData =
-        await movieRes.json();
+/* MOVIES */
 
-        const tvRes =
-        await fetch(
-        `https://api.themoviedb.org/3/trending/tv/week?api_key=${TMDB_API_KEY}`
-        );
+const movieRes = await fetch(
+`https://api.themoviedb.org/3/trending/movie/week?api_key=${TMDB_API_KEY}`
+);
 
-        const tvData =
-        await tvRes.json();
+const movieData = await movieRes.json();
 
-        const movies =
-        movieData.results.slice(0,3);
+const movies = movieData.results.slice(0,3);
 
-        const series =
-        tvData.results.slice(0,3);
+movies.forEach(item=>{
+item.contentType="🎬 Movie";
+});
 
-        movies.forEach(item=>{
-            item.contentType="🎬 Movie";
-        });
+heroItems.push(...movies);
 
-        series.forEach(item=>{
-            item.contentType="📺 Web Series";
-        });
+/* WEB SERIES */
 
-        heroItems=[
-            ...movies,
-            ...series
-        ];
+const tvRes = await fetch(
+`https://api.themoviedb.org/3/trending/tv/week?api_key=${TMDB_API_KEY}`
+);
 
-        updateHero();
+const tvData = await tvRes.json();
 
-        setInterval(()=>{
-            nextSlide();
-        },5000);
+const series = tvData.results.slice(0,3);
 
-    }
+series.forEach(item=>{
+item.contentType="📺 Web Series";
+});
 
-    catch(error){
+heroItems.push(...series);
 
-        console.error(error);
+/* ANIME */
 
-    }
+const animeRes = await fetch(
+"https://api.jikan.moe/v4/top/anime"
+);
+
+const animeData = await animeRes.json();
+
+animeData.data
+.slice(0,3)
+.forEach(anime=>{
+
+heroItems.push({
+
+title:anime.title,
+overview:anime.synopsis || "Top Anime",
+vote_average:anime.score || 8,
+backdrop_path:null,
+image:anime.images.jpg.large_image_url,
+contentType:"🍿 Anime"
+
+});
+
+});
+
+/* GAMES */
+
+const gameRes = await fetch(
+`https://api.rawg.io/api/games?key=${RAWG_API_KEY}`
+);
+
+const gameData = await gameRes.json();
+
+gameData.results
+.slice(0,3)
+.forEach(game=>{
+
+heroItems.push({
+
+title:game.name,
+overview:"Trending Game Worldwide",
+vote_average:game.rating,
+backdrop_path:null,
+image:game.background_image,
+contentType:"🎮 Game"
+
+});
+
+});
+
+/* CARTOONS */
+
+const cartoonRes = await fetch(
+`https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_genres=16`
+);
+
+const cartoonData = await cartoonRes.json();
+
+cartoonData.results
+.slice(0,3)
+.forEach(cartoon=>{
+
+heroItems.push({
+
+title:cartoon.title,
+overview:cartoon.overview,
+vote_average:cartoon.vote_average,
+backdrop_path:cartoon.backdrop_path,
+contentType:"🎨 Cartoon"
+
+});
+
+});
+
+updateHero();
+
+setInterval(()=>{
+nextSlide();
+},5000);
+
+}
+
+catch(error){
+
+console.error(error);
+
+}
 
 }
 
@@ -127,34 +200,49 @@ async function loadHeroContent() {
 
 function updateHero(){
 
-    const item =
-    heroItems[currentSlide];
+const item =
+heroItems[currentSlide];
 
-    if(!item) return;
+if(!item) return;
 
-    heroTitle.textContent =
-    item.title || item.name;
+heroTitle.textContent =
+item.title || item.name;
 
-    heroDescription.textContent =
-    item.overview;
+heroDescription.textContent =
+item.overview || "";
 
-    heroType.textContent =
-    item.contentType;
+heroType.textContent =
+item.contentType;
 
-    heroRating.textContent =
-    `⭐ ${item.vote_average.toFixed(1)}`;
+heroRating.textContent =
+`⭐ ${item.vote_average}`;
 
-    heroSlider.style.backgroundImage =
-    `
-    linear-gradient(
-    90deg,
-    rgba(0,0,0,.92),
-    rgba(0,0,0,.25)
-    ),
-    url(
-    https://image.tmdb.org/t/p/original${item.backdrop_path}
-    )
-    `;
+if(item.image){
+
+heroSlider.style.backgroundImage = `
+linear-gradient(
+90deg,
+rgba(0,0,0,.92),
+rgba(0,0,0,.25)
+),
+url(${item.image})
+`;
+
+}
+
+else{
+
+heroSlider.style.backgroundImage = `
+linear-gradient(
+90deg,
+rgba(0,0,0,.92),
+rgba(0,0,0,.25)
+),
+url(https://image.tmdb.org/t/p/original${item.backdrop_path})
+`;
+
+}
+
 }
 
 /* =========================
