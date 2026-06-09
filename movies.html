@@ -1,8 +1,70 @@
-<nav class="navbar">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CineVerse Movies</title>
+
+<link rel="stylesheet" href="movies.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- OVERLAY -->
+
+<div class="overlay" id="overlay"></div>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar" id="sidebar">
+
+<div class="sidebar-logo">
+🎬 CineVerse
+</div>
+
+<ul>
+
+<li onclick="window.location.href='index.html'">
+🏠 Home
+</li>
+
+<li onclick="window.location.href='movies.html'">
+🎬 Movies
+</li>
+
+<li onclick="window.location.href='webseries.html'">
+📺 Web Series
+</li>
+
+<li onclick="window.location.href='anime.html'">
+🍿 Anime
+</li>
+
+<li onclick="window.location.href='cartoons.html'">
+🎨 Cartoons
+</li>
+
+<li onclick="window.location.href='games.html'">
+🎮 Games
+</li>
+
+</ul>
+
+</div>
+
+<!-- NAVBAR -->
+
+<header class="navbar">
 
 <div class="nav-left">
 
-<button class="menu-btn" id="menuBtn">
+<button id="menuBtn" class="menu-btn">
 ☰
 </button>
 
@@ -37,48 +99,9 @@ Sign Up
 
 </div>
 
-</nav>
+</header>
 
-<div class="sidebar" id="sidebar">
-
-<div class="sidebar-logo">
-🎬 CineVerse
-</div>
-
-<ul>
-
-<li onclick="location.href='index.html'">
-🏠 Home
-</li>
-
-<li onclick="location.href='movies.html'">
-🎬 Movies
-</li>
-
-<li>
-📺 Web Series
-</li>
-
-<li>
-🍿 Anime
-</li>
-
-<li>
-🎨 Cartoons
-</li>
-
-<li>
-🎮 Games
-</li>
-
-</ul>
-
-</div>
-
-<div
-class="overlay"
-id="overlay">
-</div>
+<!-- HERO -->
 
 <section
 class="hero-slider"
@@ -86,9 +109,9 @@ id="heroSlider">
 
 <div class="hero-content">
 
-<div class="hero-tag">
+<span class="hero-tag">
 WORLDWIDE TRENDING
-</div>
+</span>
 
 <h1 id="heroTitle">
 Loading...
@@ -112,23 +135,21 @@ Movie
 
 </div>
 
-<button
-class="slider-btn prev-btn">
+<button class="slider-btn prev-btn">
 ❮
 </button>
 
-<button
-class="slider-btn next-btn">
+<button class="slider-btn next-btn">
 ❯
 </button>
 
 </section>
 
+<!-- TRENDING -->
+
 <section class="content-section">
 
-<h2>
-🔥 Trending Movies
-</h2>
+<h2>🔥 Trending Movies</h2>
 
 <div
 class="card-row"
@@ -137,11 +158,11 @@ id="trendingRow">
 
 </section>
 
+<!-- ACTION -->
+
 <section class="content-section">
 
-<h2>
-💥 Action Movies
-</h2>
+<h2>💥 Action Movies</h2>
 
 <div
 class="card-row"
@@ -150,11 +171,11 @@ id="actionRow">
 
 </section>
 
+<!-- ADVENTURE -->
+
 <section class="content-section">
 
-<h2>
-🗺 Adventure Movies
-</h2>
+<h2>🗺 Adventure Movies</h2>
 
 <div
 class="card-row"
@@ -163,11 +184,11 @@ id="adventureRow">
 
 </section>
 
+<!-- SCI-FI -->
+
 <section class="content-section">
 
-<h2>
-🚀 Sci-Fi Movies
-</h2>
+<h2>🚀 Sci-Fi Movies</h2>
 
 <div
 class="card-row"
@@ -176,11 +197,11 @@ id="scifiRow">
 
 </section>
 
+<!-- HORROR -->
+
 <section class="content-section">
 
-<h2>
-👻 Horror Movies
-</h2>
+<h2>👻 Horror Movies</h2>
 
 <div
 class="card-row"
@@ -189,11 +210,11 @@ id="horrorRow">
 
 </section>
 
+<!-- FANTASY -->
+
 <section class="content-section">
 
-<h2>
-🧙 Fantasy Movies
-</h2>
+<h2>🧙 Fantasy Movies</h2>
 
 <div
 class="card-row"
@@ -202,11 +223,11 @@ id="fantasyRow">
 
 </section>
 
+<!-- COMEDY -->
+
 <section class="content-section">
 
-<h2>
-😂 Comedy Movies
-</h2>
+<h2>😂 Comedy Movies</h2>
 
 <div
 class="card-row"
@@ -215,11 +236,11 @@ id="comedyRow">
 
 </section>
 
+<!-- THRILLER -->
+
 <section class="content-section">
 
-<h2>
-🔪 Thriller Movies
-</h2>
+<h2>🔪 Thriller Movies</h2>
 
 <div
 class="card-row"
@@ -228,11 +249,11 @@ id="thrillerRow">
 
 </section>
 
+<!-- ROMANCE -->
+
 <section class="content-section">
 
-<h2>
-❤️ Romance Movies
-</h2>
+<h2>❤️ Romance Movies</h2>
 
 <div
 class="card-row"
@@ -241,11 +262,11 @@ id="romanceRow">
 
 </section>
 
+<!-- HOLLYWOOD -->
+
 <section class="content-section">
 
-<h2>
-⭐ Top Rated Hollywood
-</h2>
+<h2>⭐ Top Rated Hollywood</h2>
 
 <div
 class="card-row"
@@ -254,11 +275,11 @@ id="hollywoodRow">
 
 </section>
 
+<!-- INDIAN -->
+
 <section class="content-section">
 
-<h2>
-🇮🇳 Indian Movies
-</h2>
+<h2>🇮🇳 Indian Movies</h2>
 
 <div
 class="card-row"
@@ -267,11 +288,11 @@ id="indianRow">
 
 </section>
 
+<!-- WORLD -->
+
 <section class="content-section">
 
-<h2>
-🌎 Top Rated Worldwide
-</h2>
+<h2>🌎 Top Rated Worldwide</h2>
 
 <div
 class="card-row"
@@ -280,11 +301,11 @@ id="worldRow">
 
 </section>
 
+<!-- UPCOMING -->
+
 <section class="content-section">
 
-<h2>
-📅 Upcoming Movies
-</h2>
+<h2>📅 Upcoming Movies</h2>
 
 <div
 class="card-row"
@@ -294,3 +315,7 @@ id="upcomingRow">
 </section>
 
 <script src="movies.js"></script>
+
+</body>
+
+</html>
