@@ -337,7 +337,7 @@ async function loadUpcomingSeries(){
 
 const res =
 await fetch(
-https://api.themoviedb.org/3/tv/on_the_air?api_key=${TMDB_API_KEY}
+`https://api.themoviedb.org/3/tv/on_the_air?api_key=${TMDB_API_KEY}`
 );
 
 const data =
