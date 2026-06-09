@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CineVerse Web Series</title>
+
+<link rel="stylesheet" href="webseries.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="sidebar" id="sidebar">
+
+<div class="sidebar-logo">
+🎬 CineVerse
+</div>
+
+<ul>
+
+<li onclick="window.location.href='index.html'">🏠 Home</li>
+<li onclick="window.location.href='movies.html'">🎬 Movies</li>
+<li onclick="window.location.href='webseries.html'">📺 Web Series</li>
+<li onclick="window.location.href='anime.html'">🍿 Anime</li>
+<li onclick="window.location.href='cartoons.html'">🎨 Cartoons</li>
+<li onclick="window.location.href='games.html'">🎮 Games</li>
+
+<hr>
+
+<li>❤️ Wishlist</li>
+<li>⚙️ Settings</li>
+
+</ul>
+
+</div>
+
+<header class="navbar">
+
+<div class="nav-left">
+
+<button id="menuBtn" class="menu-btn">
+☰
+</button>
+
+<div class="logo">
+📺 CineVerse
+</div>
+
+</div>
+
+<div class="nav-right">
+
+<div class="search-box">
+
+<input
+type="text"
+placeholder="Search Web Series..."
+>
+
+<button>
+🔍
+</button>
+
+</div>
+
+<button class="login-btn">
+Login
+</button>
+
+<button class="signup-btn">
+Sign Up
+</button>
+
+</div>
+
+</header>
+
+<section class="hero-slider" id="heroSlider">
+
+<div class="hero-content">
+
+<span class="hero-tag">
+📺 WORLDWIDE TRENDING SERIES
+</span>
+
+<h1 id="heroTitle">
+Loading...
+</h1>
+
+<p id="heroDescription">
+Loading...
+</p>
+
+<div class="hero-info">
+
+<span id="heroType">
+Series
+</span>
+
+<span id="heroRating">
+⭐ 0
+</span>
+
+</div>
+
+</div>
+
+<button class="slider-btn prev-btn">
+❮
+</button>
+
+<button class="slider-btn next-btn">
+❯
+</button>
+
+</section>
+
+<!-- TRENDING -->
+
+<section class="content-section">
+<div class="section-header">
+<h2>🔥 Trending Series</h2>
+<a href="#" class="see-all">See All →</a>
+</div>
+<div class="card-row" id="trendingRow"></div>
+</section>
+
+<!-- DRAMA -->
+
+<section class="content-section">
+<div class="section-header">
+<h2>🎭 Drama Series</h2>
+<a href="#" class="see-all">See All →</a>
+</div>
+<div class="card-row" id="dramaRow"></div>
+</section>
+
+<!-- CRIME -->
+
+<section class="content-section">
+<div class="section-header">
+<h2>🕵 Crime Series</h2>
+<a href="#" class="see-all">See All →</a>
+</div>
+<div class="card-row" id="crimeRow"></div>
+</section>
+
+<!-- SCI-FI -->
+
+<section class="content-section">
+<div class="section-header">
+<h2>🚀 Sci-Fi Series</h2>
+<a href="#" class="see-all">See All →</a>
+</div>
+<div class="card-row" id="scifiRow"></div>
+</section>
+
+<!-- COMEDY -->
+
+<section class="content-section">
+<div class="section-header">
+<h2>😂 Comedy Series</h2>
+<a href="#" class="see-all">See All →</a>
+</div>
+<div class="card-row" id="comedyRow"></div>
+</section>
+
+<!-- HORROR -->
+
+<section class="content-section">
+<div class="section-header">
+<h2>👻 Horror Series</h2>
+<a href="#" class="see-all">See All →</a>
+</div>
+<div class="card-row" id="horrorRow"></div>
+</section>
+
+<!-- ROMANCE -->
+
+<section class="content-section">
+<div class="section-header">
+<h2>❤️ Romance Series</h2>
+<a href="#" class="see-all">See All →</a>
+</div>
+<div class="card-row" id="romanceRow"></div>
+</section>
+
+<!-- KDRAMA -->
+
+<section class="content-section">
+<div class="section-header">
+<h2>🇰🇷 Korean Dramas</h2>
+<a href="#" class="see-all">See All →</a>
+</div>
+<div class="card-row" id="kdramaRow"></div>
+</section>
+
+<!-- INDIAN -->
+
+<section class="content-section">
+<div class="section-header">
+<h2>🇮🇳 Indian Series</h2>
+<a href="#" class="see-all">See All →</a>
+</div>
+<div class="card-row" id="indianRow"></div>
+</section>
+
+<!-- TOP RATED -->
+
+<section class="content-section">
+<div class="section-header">
+<h2>⭐ Top Rated Series</h2>
+<a href="#" class="see-all">See All →</a>
+</div>
+<div class="card-row" id="topRatedRow"></div>
+</section>
+
+<!-- UPCOMING -->
+
+<section class="content-section">
+<div class="section-header">
+<h2>📅 Upcoming Series</h2>
+<a href="#" class="see-all">See All →</a>
+</div>
+<div class="card-row" id="upcomingRow"></div>
+</section>
+
+<script src="webseries.js"></script>
+
+</body>
+</html>
