@@ -314,7 +314,7 @@ loadCategory(
 /* Horror */
 
 loadCategory(
-`https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}&with_genres=9648`,
+`https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}&with_genres=27`,
 "horrorRow"
 );
 
@@ -363,15 +363,8 @@ document.getElementById("upcomingRow");
 
 row.innerHTML =
 data.results
-.filter(series => {
-const today = new Date().toISOString().split("T")[0];
-return series.first_air_date > today;
-})
-
 .slice(0,20)
-.map(createUpcomingSeriesCard)
+.map(createSeriesCard)
 .join("");
 
 }
-
-loadUpcomingSeries();
