@@ -184,7 +184,32 @@ alt="${series.name}"
 
 <h3>${series.name}</h3>
 
-<p>⭐ ${series.vote_average}</p>
+<p>${series.vote_average ? `⭐ ${series.vote_average}` : ""}</p>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+function createUpcomingSeriesCard(series){
+
+return `
+
+<div class="card">
+
+<img
+src="https://image.tmdb.org/t/p/w500${series.poster_path}"
+alt="${series.name}"
+>
+
+<div class="card-info">
+
+<h3>${series.name}</h3>
+
+<p>📅 ${series.first_air_date || "Coming Soon"}</p>
 
 </div>
 
@@ -267,7 +292,7 @@ loadCategory(
 /* Comedy */
 
 loadCategory(
-`https://api.themovb.org/3/discover/tv?api_key=${TMDB_API_KEY}&with_genres=35`,
+`https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}&with_genres=35`,
 "comedyRow"
 );
 
@@ -308,7 +333,25 @@ loadCategory(
 
 /* Upcoming / Airing Today */
 
-loadCategory(
-`https://api.themoviedb.org/3/tv/airing_today?api_key=${TMDB_API_KEY}`,
-"upcomingRow"
+async function loadUpcomingSeries(){
+
+const res =
+await fetch(
+`https://api.themoviedb.org/3/tv/airing_today?api_key=${TMDB_API_KEY}`
 );
+
+const data =
+await res.json();
+
+const row =
+document.getElementById("upcomingRow");
+
+row.innerHTML =
+data.results
+.slice(0,20)
+.map(createUpcomingSeriesCard)
+.join("");
+
+}
+
+loadUpcomingSeries();
