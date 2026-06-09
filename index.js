@@ -24,6 +24,18 @@ overlay.addEventListener("click", () => {
     overlay.classList.remove("active");
 });
 
+document.querySelectorAll(".sidebar li")
+.forEach(item => {
+
+item.addEventListener("click", () => {
+
+sidebar.classList.remove("active");
+overlay.classList.remove("active");
+
+});
+
+});
+
 /* =========================
    HERO ELEMENTS
 ========================= */
