@@ -1,24 +1,13 @@
-console.log("Cartoons JS Loaded");
-
-
-/* =========================
-   API
-========================= */
-
+```javascript
 const TMDB_API_KEY = "6a782c30983b74d5e01dbab7cf128327";
 
 /* =========================
-   SIDEBAR
+SIDEBAR
 ========================= */
 
-const menuBtn =
-document.getElementById("menuBtn");
-
-const sidebar =
-document.getElementById("sidebar");
-
-const overlay =
-document.getElementById("overlay");
+const menuBtn = document.getElementById("menuBtn");
+const sidebar = document.getElementById("sidebar");
+const overlay = document.getElementById("overlay");
 
 if(menuBtn){
 
@@ -43,7 +32,7 @@ overlay.classList.remove("active");
 }
 
 /* =========================
-   HERO
+HERO
 ========================= */
 
 const heroSlider =
@@ -65,21 +54,18 @@ let heroItems = [];
 let currentSlide = 0;
 
 /* =========================
-   HERO FETCH
+HERO CONTENT
 ========================= */
 
 async function loadHeroContent(){
 
 try{
 
-const res =
-
-await fetch(
-`https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}`
+const res = await fetch(
+`https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}&with_genres=16&sort_by=popularity.desc`
 );
 
-const data =
-await res.json();
+const data = await res.json();
 
 heroItems =
 data.results
@@ -102,10 +88,6 @@ console.log(err);
 }
 
 }
-
-/* =========================
-   HERO UPDATE
-========================= */
 
 function updateHero(){
 
@@ -139,10 +121,6 @@ url(https://image.tmdb.org/t/p/original${item.backdrop_path})
 
 }
 
-/* =========================
-   SLIDER
-========================= */
-
 function nextSlide(){
 
 currentSlide++;
@@ -159,14 +137,14 @@ updateHero();
 
 document
 .querySelector(".next-btn")
-.addEventListener(
+?.addEventListener(
 "click",
 nextSlide
 );
 
 document
 .querySelector(".prev-btn")
-.addEventListener(
+?.addEventListener(
 "click",
 ()=>{
 
@@ -185,7 +163,7 @@ updateHero();
 );
 
 /* =========================
-   CARD
+CARD
 ========================= */
 
 function createCard(item){
@@ -196,22 +174,16 @@ return `
 
 <img
 src="https://image.tmdb.org/t/p/w500${item.poster_path}"
-alt="${item.name || item.title}"
+alt="${item.name}"
 >
 
 <div class="card-info">
 
-<h3>
-${item.name || item.title}
-</h3>
+<h3>${item.name}</h3>
 
-<p>
-⭐ ${item.vote_average}
-</p>
+<p>⭐ ${item.vote_average}</p>
 
-<p>
-📺 Cartoon
-</p>
+<p>📺 Cartoon</p>
 
 </div>
 
@@ -222,7 +194,7 @@ ${item.name || item.title}
 }
 
 /* =========================
-   CATEGORY LOADER
+LOAD CATEGORY
 ========================= */
 
 async function loadCategory(
@@ -233,9 +205,7 @@ rowId
 try{
 
 const res =
-await fetch(
-`https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}`
-);
+await fetch(url);
 
 const data =
 await res.json();
@@ -247,6 +217,7 @@ if(!row) return;
 
 row.innerHTML =
 data.results
+.filter(item => item.poster_path)
 .slice(0,20)
 .map(createCard)
 .join("");
@@ -262,17 +233,62 @@ console.log(err);
 }
 
 /* =========================
-   LOAD HERO
+LOAD HERO
 ========================= */
 
 loadHeroContent();
 
 /* =========================
-   TRENDING CARTOONS
+TRENDING
 ========================= */
 
 loadCategory(
 `https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}&with_genres=16&sort_by=popularity.desc`,
 "trendingRow"
+);
+
+/* =========================
+TOP RATED
+========================= */
+
+loadCategory(
+`https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}&with_genres=16&sort_by=vote_average.desc&vote_count.gte=500`,
+"topRatedRow"
+);
+
+/* =========================
+FAMILY
+========================= */
+
+loadCategory(
+`https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}&with_genres=16,10751`,
+"familyRow"
+);
+
+/* =========================
+DISNEY
+========================= */
+
+loadCategory(
+`https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&query=Disney`,
+"disneyRow"
+);
+
+/* =========================
+CARTOON NETWORK
+========================= */
+
+loadCategory(
+`https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&query=Cartoon`,
+"cnRow"
+);
+
+/* =========================
+NICKELODEON
+========================= */
+
+loadCategory(
+`https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&query=Nickelodeon`,
+"nickRow"
 );
 ```
