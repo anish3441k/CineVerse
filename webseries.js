@@ -319,7 +319,7 @@ loadCategory(
 /* Horror */
 
 loadCategory(
-`https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}&with_genres=27`,
+`https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}&with_genres=9648,10765`,
 "horrorRow"
 );
 
