@@ -61,29 +61,23 @@ document.getElementById("resultsGrid");
 CARD
 ========================= */
 
-function createGameCard(game){
+function createGameCard(game) {
 
 return `
-
 <div class="card">
+    <img
+        src="${game.background_image || ''}"
+        alt="${game.name}"
+    >
 
-<img
-src="${game.background_image || ''}"
-alt="${game.name}"
->
+    <div class="card-info">
+        <h3>${game.name}</h3>
 
-<div class="card-info">
+        <p>⭐ ${game.rating || "N/A"}</p>
 
-<h3>${game.name}</h3>
-
-<p>⭐ ${game.rating || "N/A"}</p>
-
-<p>📅 ${game.released || "TBA"}</p>
-
+        <p>📅 ${game.released || "TBA"}</p>
+    </div>
 </div>
-
-</div>
-
 `;
 
 }
