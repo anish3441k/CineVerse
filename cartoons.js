@@ -291,3 +291,60 @@ loadCategory(
 `https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&query=Nickelodeon`,
 "nickRow"
 );
+
+
+/* =========================
+COMEDY
+========================= */
+
+loadCategory(
+`https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}&with_genres=16,35`,
+"comedyRow"
+);
+
+/* =========================
+SUPERHERO
+========================= */
+
+loadCategory(
+`https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&query=Superhero`,
+"superheroRow"
+);
+
+/* =========================
+SCI-FI
+========================= */
+
+loadCategory(
+`https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}&with_genres=16,10765`,
+"scifiRow"
+);
+
+/* =========================
+MOVIES
+========================= */
+
+async function loadCartoonMovies(){
+
+const res =
+await fetch(
+`https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_genres=16&sort_by=popularity.desc`
+);
+
+const data =
+await res.json();
+
+const row =
+document.getElementById("movieRow");
+
+if(!row) return;
+
+row.innerHTML =
+data.results
+.slice(0,20)
+.map(createCard)
+.join("");
+
+}
+
+loadCartoonMovies();
