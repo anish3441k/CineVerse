@@ -292,4 +292,3 @@ loadCategory(
 `https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&query=Nickelodeon`,
 "nickRow"
 );
-```
