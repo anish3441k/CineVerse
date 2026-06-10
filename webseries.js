@@ -355,6 +355,8 @@ loadCategory(
 
 async function loadUpcomingSeries(){
 
+try{
+
 const res =
 await fetch(
 `https://api.themoviedb.org/3/tv/on_the_air?api_key=${TMDB_API_KEY}`
@@ -362,6 +364,8 @@ await fetch(
 
 const data =
 await res.json();
+
+console.log(data);
 
 const row =
 document.getElementById("upcomingRow");
@@ -373,3 +377,13 @@ data.results
 .join("");
 
 }
+
+catch(err){
+
+console.log(err);
+
+}
+
+}
+
+loadUpcomingSeries();
