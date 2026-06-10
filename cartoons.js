@@ -18,12 +18,16 @@ document.getElementById("sidebar");
 const overlay =
 document.getElementById("overlay");
 
+if(menuBtn){
+
 menuBtn.addEventListener("click",()=>{
 
 sidebar.classList.add("active");
 overlay.classList.add("active");
 
 });
+
+}
 
 overlay.addEventListener("click",()=>{
 
