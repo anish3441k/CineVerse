@@ -1,0 +1,230 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CineVerse Cartoons</title>
+
+<link rel="stylesheet" href="cartoons.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="overlay" id="overlay"></div>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar" id="sidebar">
+
+<div class="sidebar-logo">
+🎨 CineVerse
+</div>
+
+<ul>
+
+<li onclick="window.location.href='index.html'">🏠 Home</li>
+<li onclick="window.location.href='movies.html'">🎬 Movies</li>
+<li onclick="window.location.href='webseries.html'">📺 Web Series</li>
+<li onclick="window.location.href='anime.html'">🍿 Anime</li>
+<li onclick="window.location.href='cartoons.html'">🎨 Cartoons</li>
+<li onclick="window.location.href='games.html'">🎮 Games</li>
+
+<hr>
+
+<li>❤️ Wishlist</li>
+<li>⚙️ Settings</li>
+
+</ul>
+
+</div>
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+<div class="nav-left">
+
+<button id="menuBtn" class="menu-btn">
+☰
+</button>
+
+<div class="logo">
+🎨 CineVerse
+</div>
+
+</div>
+
+<div class="nav-right">
+
+<div class="search-box">
+
+<input
+type="text"
+placeholder="Search Cartoons..."
+>
+
+<button>🔍</button>
+
+</div>
+
+<button class="login-btn">
+Login
+</button>
+
+<button class="signup-btn">
+Sign Up
+</button>
+
+</div>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero-slider" id="heroSlider">
+
+<div class="hero-content">
+
+<span class="hero-tag">
+🎨 WORLDWIDE TRENDING CARTOONS
+</span>
+
+<h1 id="heroTitle">
+Loading...
+</h1>
+
+<p id="heroDescription">
+Loading...
+</p>
+
+<div class="hero-info">
+
+<span id="heroType">
+Cartoon
+</span>
+
+<span id="heroRating">
+⭐ 0
+</span>
+
+</div>
+
+</div>
+
+<button class="slider-btn prev-btn">❮</button>
+<button class="slider-btn next-btn">❯</button>
+
+</section>
+
+<!-- TRENDING -->
+
+<section class="content-section">
+<div class="section-header">
+<h2>🔥 Trending Cartoons</h2>
+<a href="#" class="see-all">See All →</a>
+</div>
+<div class="card-row" id="trendingRow"></div>
+</section>
+
+<!-- TOP RATED -->
+
+<section class="content-section">
+<div class="section-header">
+<h2>⭐ Top Rated Cartoons</h2>
+<a href="#" class="see-all">See All →</a>
+</div>
+<div class="card-row" id="topRatedRow"></div>
+</section>
+
+<!-- DISNEY -->
+
+<section class="content-section">
+<div class="section-header">
+<h2>🏰 Disney Animation</h2>
+<a href="#" class="see-all">See All →</a>
+</div>
+<div class="card-row" id="disneyRow"></div>
+</section>
+
+<!-- PIXAR -->
+
+<section class="content-section">
+<div class="section-header">
+<h2>⭐ Pixar Animation</h2>
+<a href="#" class="see-all">See All →</a>
+</div>
+<div class="card-row" id="pixarRow"></div>
+</section>
+
+<!-- CARTOON NETWORK -->
+
+<section class="content-section">
+<div class="section-header">
+<h2>📺 Cartoon Network</h2>
+<a href="#" class="see-all">See All →</a>
+</div>
+<div class="card-row" id="cnRow"></div>
+</section>
+
+<!-- NICKELODEON -->
+
+<section class="content-section">
+<div class="section-header">
+<h2>🧽 Nickelodeon</h2>
+<a href="#" class="see-all">See All →</a>
+</div>
+<div class="card-row" id="nickRow"></div>
+</section>
+
+<!-- FAMILY -->
+
+<section class="content-section">
+<div class="section-header">
+<h2>👨‍👩‍👧 Family Cartoons</h2>
+<a href="#" class="see-all">See All →</a>
+</div>
+<div class="card-row" id="familyRow"></div>
+</section>
+
+<!-- SUPERHERO -->
+
+<section class="content-section">
+<div class="section-header">
+<h2>🦸 Superhero Cartoons</h2>
+<a href="#" class="see-all">See All →</a>
+</div>
+<div class="card-row" id="heroRow"></div>
+</section>
+
+<!-- COMEDY -->
+
+<section class="content-section">
+<div class="section-header">
+<h2>😂 Comedy Cartoons</h2>
+<a href="#" class="see-all">See All →</a>
+</div>
+<div class="card-row" id="comedyRow"></div>
+</section>
+
+<!-- CARTOON MOVIES -->
+
+<section class="content-section">
+<div class="section-header">
+<h2>🎬 Cartoon Movies</h2>
+<a href="#" class="see-all">See All →</a>
+</div>
+<div class="card-row" id="movieRow"></div>
+</section>
+
+<script src="cartoons.js"></script>
+
+</body>
+</html>
+```
