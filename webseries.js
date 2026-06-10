@@ -127,6 +127,8 @@ url(https://image.tmdb.org/t/p/original${item.backdrop_path})
 
 }
 
+}
+
 function nextSlide(){
 
 currentSlide++;
@@ -367,7 +369,7 @@ document.getElementById("upcomingRow");
 row.innerHTML =
 data.results
 .slice(0,20)
-.map(createSeriesCard)
+.map(createUpcomingSeriesCard)
 .join("");
 
 }
