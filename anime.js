@@ -65,6 +65,8 @@ sort:TRENDING_DESC
 
 title{
 romaji
+english
+native
 }
 
 description(asHtml:false)
@@ -139,7 +141,7 @@ heroAnime[currentSlide];
 if(!anime) return;
 
 heroTitle.textContent =
-anime.title.romaji;
+anime.title.english || anime.title.romaji;
 
 heroDescription.textContent =
 (anime.description || "")
@@ -204,7 +206,13 @@ row.innerHTML += `
 
 <div class="card-info">
 
-<h3>${anime.title.romaji}</h3>
+<h3>
+${anime.title.english || anime.title.romaji}
+</h3>
+
+<p class="jp-title">
+${anime.title.native || anime.title.romaji}
+</p>
 
 <p>⭐ ${anime.averageScore || "N/A"}</p>
 
@@ -248,6 +256,8 @@ sort:POPULARITY_DESC
 
 title{
 romaji
+english
+native
 }
 
 coverImage{
@@ -300,7 +310,13 @@ data.data.Page.media.map(anime=>`
 
 <div class="card-info">
 
-<h3>${anime.title.romaji}</h3>
+<h3>
+${anime.title.english || anime.title.romaji}
+</h3>
+
+<p class="jp-title">
+${anime.title.native || anime.title.romaji}
+</p>
 
 <p>⭐ ${anime.averageScore || "N/A"}</p>
 
@@ -353,7 +369,7 @@ loadCategory(
 );
 
 loadCategory(
-"School",
+"Drama",
 "schoolRow"
 );
 
@@ -377,6 +393,8 @@ sort:POPULARITY_DESC
 
 title{
 romaji
+english
+native
 }
 
 coverImage{
@@ -428,7 +446,13 @@ data.data.Page.media.map(anime=>`
 
 <div class="card-info">
 
-<h3>${anime.title.romaji}</h3>
+<h3>
+${anime.title.english || anime.title.romaji}
+</h3>
+
+<p class="jp-title">
+${anime.title.native || anime.title.romaji}
+</p>
 
 <p>⭐ ${anime.averageScore || "N/A"}</p>
 
@@ -443,3 +467,94 @@ data.data.Page.media.map(anime=>`
 }
 
 loadAnimeMovies();
+
+async function loadTopRatedAnime(){
+
+const query = `
+query {
+
+Page(page:1, perPage:20){
+
+media(
+type:ANIME,
+sort:SCORE_DESC
+){
+
+title{
+romaji
+english
+native
+}
+
+coverImage{
+large
+}
+
+averageScore
+
+status
+
+}
+
+}
+
+}
+`;
+
+const response =
+await fetch(
+ANILIST_API,
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({query})
+}
+);
+
+const data =
+await response.json();
+
+const row =
+document.getElementById("topRatedRow");
+
+if(!row) return;
+
+row.innerHTML =
+data.data.Page.media.map(anime=>`
+
+<div class="card">
+
+<img src="${anime.coverImage.large}">
+
+<div class="card-info">
+
+<h3>
+${anime.title.english || anime.title.romaji}
+</h3>
+
+<p class="jp-title">
+${anime.title.native || anime.title.romaji}
+</p>
+
+<p>⭐ ${anime.averageScore || "N/A"}</p>
+
+<p>
+${anime.status === "FINISHED"
+? "✅ Completed"
+: "🔄 Ongoing"}
+</p>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+loadTopRatedAnime();
+
+console.log("Top Rated Row:", document.getElementById("topRatedRow"));
+console.log("School Row:", document.getElementById("schoolRow"));
