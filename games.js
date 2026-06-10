@@ -53,8 +53,10 @@ function createGameCard(game){
 
 return `
 
+<div class="card">
+
 <img
-src="${game.background_image}"
+src="${game.background_image || ''}"
 alt="${game.name}"
 >
 
