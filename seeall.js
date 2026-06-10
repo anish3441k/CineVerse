@@ -1,252 +1,141 @@
-```javascript
 const RAWG_API_KEY = "46c8367e234446499ca5c4af86087b29";
 
 /* =========================
-SIDEBAR
-========================= */
+   SIDEBAR
+   ========================= */
+const menuBtn = document.getElementById("menuBtn");
+const sidebar = document.getElementById("sidebar");
+const overlay = document.getElementById("overlay");
 
-const menuBtn =
-document.getElementById("menuBtn");
+if (menuBtn && sidebar && overlay) {
+    menuBtn.addEventListener("click", () => {
+        sidebar.classList.add("active");
+        overlay.classList.add("active");
+    });
 
-const sidebar =
-document.getElementById("sidebar");
-
-const overlay =
-document.getElementById("overlay");
-
-if(menuBtn){
-
-menuBtn.addEventListener("click",()=>{
-
-sidebar.classList.add("active");
-overlay.classList.add("active");
-
-});
-
-}
-
-if(overlay){
-
-overlay.addEventListener("click",()=>{
-
-sidebar.classList.remove("active");
-overlay.classList.remove("active");
-
-});
-
+    overlay.addEventListener("click", () => {
+        sidebar.classList.remove("active");
+        overlay.classList.remove("active");
+    });
 }
 
 /* =========================
-GET URL PARAMS
-========================= */
+   GET URL PARAMS
+   ========================= */
+const params = new URLSearchParams(window.location.search);
+const type = params.get("type");
+const category = params.get("category");
 
-const params =
-new URLSearchParams(
-window.location.search
-);
-
-const type =
-params.get("type");
-
-const category =
-params.get("category");
-
-const pageTitle =
-document.getElementById("pageTitle");
-
-const resultsGrid =
-document.getElementById("resultsGrid");
+const pageTitle = document.getElementById("pageTitle");
+const resultsGrid = document.getElementById("resultsGrid");
 
 /* =========================
-CARD
-========================= */
-
+   CARD COMPONENT
+   ========================= */
 function createGameCard(game) {
-
-return `
-<div class="card">
-    <img
-        src="${game.background_image || ''}"
-        alt="${game.name}"
-    >
-
-    <div class="card-info">
-        <h3>${game.name}</h3>
-
-        <p>⭐ ${game.rating || "N/A"}</p>
-
-        <p>📅 ${game.released || "TBA"}</p>
+    // Added a placeholder image fallback
+    const imgUrl = game.background_image || 'https://via.placeholder.com/600x400?text=No+Image+Available';
+    
+    return `
+    <div class="card">
+        <img src="${imgUrl}" alt="${game.name}">
+        <div class="card-info">
+            <h3>${game.name}</h3>
+            <p>⭐ ${game.rating || "N/A"}</p>
+            <p>📅 ${game.released || "TBA"}</p>
+        </div>
     </div>
-</div>
-`;
-
+    `;
 }
 
 /* =========================
-LOAD GAMES
-========================= */
+   LOAD GAMES
+   ========================= */
+async function loadGames() {
+    if (!resultsGrid) return; // Prevent errors if grid isn't in HTML
 
-async function loadGames(){
+    // Show loading state
+    resultsGrid.innerHTML = `<div class="loading">Loading games...</div>`;
 
-let url = "";
+    let url = "";
+    let title = "🎮 Games";
 
-switch(category){
+    switch (category) {
+        case "trending":
+            title = "🔥 Trending Games";
+            url = `https://api.rawg.io/api/games?key=${RAWG_API_KEY}&ordering=-added&page_size=40`;
+            break;
+        case "toprated":
+            title = "⭐ Top Rated Games";
+            url = `https://api.rawg.io/api/games?key=${RAWG_API_KEY}&ordering=-rating&page_size=40`;
+            break;
+        case "action":
+            title = "🎮 Action Games";
+            url = `https://api.rawg.io/api/games?key=${RAWG_API_KEY}&genres=action&page_size=40`;
+            break;
+        case "openworld":
+            title = "🗺 Open World Games";
+            url = `https://api.rawg.io/api/games?key=${RAWG_API_KEY}&tags=open-world&page_size=40`;
+            break;
+        case "rpg":
+            title = "⚔ RPG Games";
+            url = `https://api.rawg.io/api/games?key=${RAWG_API_KEY}&genres=role-playing-games-rpg&page_size=40`;
+            break;
+        case "shooter":
+            title = "🔫 Shooter Games";
+            url = `https://api.rawg.io/api/games?key=${RAWG_API_KEY}&genres=shooter&page_size=40`;
+            break;
+        case "horror":
+            title = "👻 Horror Games";
+            url = `https://api.rawg.io/api/games?key=${RAWG_API_KEY}&tags=horror&page_size=40`;
+            break;
+        case "racing":
+            title = "🏎 Racing Games";
+            url = `https://api.rawg.io/api/games?key=${RAWG_API_KEY}&genres=racing&page_size=40`;
+            break;
+        case "sports":
+            title = "⚽ Sports Games";
+            url = `https://api.rawg.io/api/games?key=${RAWG_API_KEY}&genres=sports&page_size=40`;
+            break;
+        case "upcoming":
+            title = "📅 Upcoming Games";
+            const today = new Date().toISOString().split("T")[0];
+            const nextYearDate = new Date();
+            nextYearDate.setFullYear(nextYearDate.getFullYear() + 1);
+            const yearFromNow = nextYearDate.toISOString().split("T")[0];
+            // Added ordering=released so upcoming shows closest dates first
+            url = `https://api.rawg.io/api/games?key=${RAWG_API_KEY}&dates=${today},${yearFromNow}&ordering=released&page_size=40`;
+            break;
+        default:
+            title = "🎮 All Games";
+            url = `https://api.rawg.io/api/games?key=${RAWG_API_KEY}&page_size=40`;
+    }
 
-case "trending":
+    if (pageTitle) pageTitle.textContent = title;
 
-pageTitle.textContent =
-"🔥 Trending Games";
+    try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error("Failed to fetch data");
+        
+        const data = await res.json();
 
-url =
-`https://api.rawg.io/api/games?key=${RAWG_API_KEY}&ordering=-added&page_size=40`;
-
-break;
-
-case "toprated":
-
-pageTitle.textContent =
-"⭐ Top Rated Games";
-
-url =
-`https://api.rawg.io/api/games?key=${RAWG_API_KEY}&ordering=-rating&page_size=40`;
-
-break;
-
-case "action":
-
-pageTitle.textContent =
-"🎮 Action Games";
-
-url =
-`https://api.rawg.io/api/games?key=${RAWG_API_KEY}&genres=action&page_size=40`;
-
-break;
-
-case "openworld":
-
-pageTitle.textContent =
-"🗺 Open World Games";
-
-url =
-`https://api.rawg.io/api/games?key=${RAWG_API_KEY}&tags=open-world&page_size=40`;
-
-break;
-
-case "rpg":
-
-pageTitle.textContent =
-"⚔ RPG Games";
-
-url =
-`https://api.rawg.io/api/games?key=${RAWG_API_KEY}&genres=role-playing-games-rpg&page_size=40`;
-
-break;
-
-case "shooter":
-
-pageTitle.textContent =
-"🔫 Shooter Games";
-
-url =
-`https://api.rawg.io/api/games?key=${RAWG_API_KEY}&genres=shooter&page_size=40`;
-
-break;
-
-case "horror":
-
-pageTitle.textContent =
-"👻 Horror Games";
-
-url =
-`https://api.rawg.io/api/games?key=${RAWG_API_KEY}&tags=horror&page_size=40`;
-
-break;
-
-case "racing":
-
-pageTitle.textContent =
-"🏎 Racing Games";
-
-url =
-`https://api.rawg.io/api/games?key=${RAWG_API_KEY}&genres=racing&page_size=40`;
-
-break;
-
-case "sports":
-
-pageTitle.textContent =
-"⚽ Sports Games";
-
-url =
-`https://api.rawg.io/api/games?key=${RAWG_API_KEY}&genres=sports&page_size=40`;
-
-break;
-
-case "upcoming":
-
-pageTitle.textContent =
-"📅 Upcoming Games";
-
-const today =
-new Date()
-.toISOString()
-.split("T")[0];
-
-const nextYear =
-new Date();
-
-nextYear.setFullYear(
-nextYear.getFullYear()+1
-);
-
-const yearFromNow =
-nextYear
-.toISOString()
-.split("T")[0];
-
-url =
-`https://api.rawg.io/api/games?key=${RAWG_API_KEY}&dates=${today},${yearFromNow}&page_size=40`;
-
-break;
-
-default:
-
-pageTitle.textContent =
-"🎮 Games";
-
-url =
-`https://api.rawg.io/api/games?key=${RAWG_API_KEY}&page_size=40`;
-
-}
-
-try{
-
-const res =
-await fetch(url);
-
-const data =
-await res.json();
-
-resultsGrid.innerHTML =
-data.results
-.map(createGameCard)
-.join("");
-
-}catch(err){
-
-console.log(err);
-
-}
-
+        if (data.results && data.results.length > 0) {
+            resultsGrid.innerHTML = data.results
+                .map(createGameCard)
+                .join("");
+        } else {
+            resultsGrid.innerHTML = `<p class="no-results">No games found for this category.</p>`;
+        }
+    } catch (err) {
+        console.error(err);
+        resultsGrid.innerHTML = `<p class="error">Error loading games. Please check your connection or API key.</p>`;
+    }
 }
 
 /* =========================
-INIT
-========================= */
-
-if(type === "games"){
-
-loadGames();
-
+   INIT
+   ========================= */
+// Checks if the page is intended to show games or if a category exists
+if (type === "games" || category) {
+    loadGames();
 }
-```
