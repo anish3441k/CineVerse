@@ -373,7 +373,7 @@ document.getElementById("upcomingRow");
 row.innerHTML =
 data.results
 .slice(0,20)
-.map(createUpcomingSeriesCard)
+.map(createSeriesCard)
 .join("");
 
 }
