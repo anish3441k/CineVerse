@@ -1,4 +1,6 @@
-```javascript
+console.log("Cartoons JS Loaded");
+
+
 /* =========================
    API
 ========================= */
@@ -29,12 +31,16 @@ overlay.classList.add("active");
 
 }
 
+if(overlay){
+
 overlay.addEventListener("click",()=>{
 
 sidebar.classList.remove("active");
 overlay.classList.remove("active");
 
 });
+
+}
 
 /* =========================
    HERO
@@ -67,8 +73,9 @@ async function loadHeroContent(){
 try{
 
 const res =
+
 await fetch(
-`https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}&with_genres=16&sort_by=popularity.desc`
+`https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}`
 );
 
 const data =
@@ -226,7 +233,9 @@ rowId
 try{
 
 const res =
-await fetch(url);
+await fetch(
+`https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}`
+);
 
 const data =
 await res.json();
