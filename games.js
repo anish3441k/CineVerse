@@ -52,7 +52,6 @@ CARD
 function createGameCard(game){
 
 return `
-<div class="card">
 
 <img
 src="${game.background_image}"
