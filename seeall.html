@@ -1,0 +1,77 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CineVerse - See All</title>
+
+<link rel="stylesheet" href="seeall.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="sidebar" id="sidebar">
+
+<div class="sidebar-logo">
+🎬 CineVerse
+</div>
+
+<ul>
+
+<li onclick="window.location.href='index.html'">🏠 Home</li>
+<li onclick="window.location.href='movies.html'">🎬 Movies</li>
+<li onclick="window.location.href='webseries.html'">📺 Web Series</li>
+<li onclick="window.location.href='anime.html'">🍿 Anime</li>
+<li onclick="window.location.href='cartoons.html'">🎨 Cartoons</li>
+<li onclick="window.location.href='games.html'">🎮 Games</li>
+
+<hr>
+
+<li>❤️ Wishlist</li>
+<li>⚙️ Settings</li>
+
+</ul>
+
+</div>
+
+<header class="navbar">
+
+<div class="nav-left">
+
+<button id="menuBtn" class="menu-btn">
+☰
+</button>
+
+<div class="logo">
+🎬 CineVerse
+</div>
+
+</div>
+
+</header>
+
+<section class="page-header">
+
+<h1 id="pageTitle">
+Loading...
+</h1>
+
+</section>
+
+<div class="grid-container" id="resultsGrid"></div>
+
+<script src="seeall.js"></script>
+
+</body>
+
+</html>
+```
