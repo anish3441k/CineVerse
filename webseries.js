@@ -4,6 +4,12 @@
 
 const TMDB_API_KEY = "6a782c30983b74d5e01dbab7cf128327";
 
+function tmdbUrl(path, params = {}) {
+    const query = new URLSearchParams(params).toString();
+    return `/api/tmdb?path=${encodeURIComponent(path)}${query ? `&${query}` : ""}`;
+}
+
+
 /* =========================
    SIDEBAR
 ========================= */
@@ -63,7 +69,7 @@ try{
 
 const res =
 await fetch(
-`https://api.themoviedb.org/3/trending/tv/week?api_key=${TMDB_API_KEY}`
+`${tmdbUrl("/trending/tv/week")}`
 );
 
 const data =
@@ -284,70 +290,70 @@ loadHeroContent();
 /* Trending */
 
 loadCategory(
-`https://api.themoviedb.org/3/trending/tv/week?api_key=${TMDB_API_KEY}`,
+`${tmdbUrl("/trending/tv/week")}`,
 "trendingRow"
 );
 
 /* Drama */
 
 loadCategory(
-`https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}&with_genres=18`,
+`${tmdbUrl("/discover/tv?with_genres=18")}`,
 "dramaRow"
 );
 
 /* Crime */
 
 loadCategory(
-`https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}&with_genres=80`,
+`${tmdbUrl("/discover/tv?with_genres=80")}`,
 "crimeRow"
 );
 
 /* Sci-Fi */
 
 loadCategory(
-`https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}&with_genres=10765`,
+`${tmdbUrl("/discover/tv?with_genres=10765")}`,
 "scifiRow"
 );
 
 /* Comedy */
 
 loadCategory(
-`https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}&with_genres=35`,
+`${tmdbUrl("/discover/tv?with_genres=35")}`,
 "comedyRow"
 );
 
 /* Horror */
 
 loadCategory(
-`https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}&with_genres=9648,10765`,
+`${tmdbUrl("/discover/tv?with_genres=9648,10765")}`,
 "horrorRow"
 );
 
 /* Romance */
 
 loadCategory(
-`https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}&with_genres=10749`,
+`${tmdbUrl("/discover/tv?with_genres=10749")}`,
 "romanceRow"
 );
 
 /* Korean Dramas */
 
 loadCategory(
-`https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}&with_origin_country=KR`,
+`${tmdbUrl("/discover/tv?with_origin_country=KR")}`,
 "kdramaRow"
 );
 
 /* Indian Series */
 
 loadCategory(
-`https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}&with_origin_country=IN`,
+`${tmdbUrl("/discover/tv?with_origin_country=IN")}`,
 "indianRow"
 );
 
 /* Top Rated */
 
 loadCategory(
-`https://api.themoviedb.org/3/tv/top_rated?api_key=${TMDB_API_KEY}`,
+`${tmdbUrl("/tv/top_rated")}`,
 "topRatedRow"
 );
 
@@ -359,7 +365,7 @@ try{
 
 const res =
 await fetch(
-`https://api.themoviedb.org/3/tv/on_the_air?api_key=${TMDB_API_KEY}`
+`${tmdbUrl("/tv/on_the_air")}`
 );
 
 const data =

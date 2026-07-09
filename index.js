@@ -4,6 +4,12 @@
 ========================= */
 
 const TMDB_API_KEY = "6a782c30983b74d5e01dbab7cf128327";
+
+function tmdbUrl(path, params = {}) {
+    const query = new URLSearchParams(params).toString();
+    return `/api/tmdb?path=${encodeURIComponent(path)}${query ? `&${query}` : ""}`;
+}
+
 const RAWG_API_KEY = "46c8367e234446499ca5c4af86087b29";
 
 /* =========================
@@ -75,7 +81,7 @@ heroItems = [];
 /* MOVIES */
 
 const movieRes = await fetch(
-`https://api.themoviedb.org/3/trending/movie/week?api_key=${TMDB_API_KEY}`
+`${tmdbUrl("/trending/movie/week")}`
 );
 
 const movieData = await movieRes.json();
@@ -91,7 +97,7 @@ heroItems.push(...movies);
 /* WEB SERIES */
 
 const tvRes = await fetch(
-`https://api.themoviedb.org/3/trending/tv/week?api_key=${TMDB_API_KEY}`
+`${tmdbUrl("/trending/tv/week")}`
 );
 
 const tvData = await tvRes.json();
@@ -157,7 +163,7 @@ contentType:"🎮 Game"
 /* CARTOONS */
 
 const cartoonRes = await fetch(
-`https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_genres=16`
+`${tmdbUrl("/discover/movie?with_genres=16")}`
 );
 
 const cartoonData = await cartoonRes.json();
@@ -330,7 +336,7 @@ async function loadMovies(){
 
     const res =
     await fetch(
-    `https://api.themoviedb.org/3/trending/movie/week?api_key=${TMDB_API_KEY}`
+    `${tmdbUrl("/trending/movie/week")}`
     );
 
     const data =
@@ -357,7 +363,7 @@ async function loadSeries(){
 
     const res =
     await fetch(
-    `https://api.themoviedb.org/3/trending/tv/week?api_key=${TMDB_API_KEY}`
+    `${tmdbUrl("/trending/tv/week")}`
     );
 
     const data =
@@ -499,7 +505,7 @@ async function loadCartoons(){
 try{
 
 const res = await fetch(
-`https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_genres=16&sort_by=popularity.desc`
+`${tmdbUrl("/discover/movie?with_genres=16?sort_by=popularity.desc")}`
 );
 
 const data = await res.json();
@@ -574,7 +580,7 @@ actorsRow.innerHTML = "";
 try{
 
 const res = await fetch(
-`https://api.themoviedb.org/3/person/popular?api_key=${TMDB_API_KEY}`
+`${tmdbUrl("/person/popular")}`
 );
 
 const data = await res.json();

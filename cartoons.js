@@ -1,6 +1,12 @@
 
 const TMDB_API_KEY = "6a782c30983b74d5e01dbab7cf128327";
 
+function tmdbUrl(path, params = {}) {
+    const query = new URLSearchParams(params).toString();
+    return `/api/tmdb?path=${encodeURIComponent(path)}${query ? `&${query}` : ""}`;
+}
+
+
 /* =========================
 SIDEBAR
 ========================= */
@@ -62,7 +68,7 @@ async function loadHeroContent(){
 try{
 
 const res = await fetch(
-`https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}&with_genres=16&sort_by=popularity.desc`
+`${tmdbUrl("/discover/tv?with_genres=16?sort_by=popularity.desc")}`
 );
 
 const data = await res.json();
@@ -243,7 +249,7 @@ TRENDING
 ========================= */
 
 loadCategory(
-`https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}&with_genres=16&sort_by=popularity.desc`,
+`${tmdbUrl("/discover/tv?with_genres=16?sort_by=popularity.desc")}`,
 "trendingRow"
 );
 
@@ -252,7 +258,7 @@ TOP RATED
 ========================= */
 
 loadCategory(
-`https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}&with_genres=16&sort_by=vote_average.desc&vote_count.gte=500`,
+`${tmdbUrl("/discover/tv?with_genres=16?sort_by=vote_average.desc?vote_count.gte=500")}`,
 "topRatedRow"
 );
 
@@ -261,7 +267,7 @@ FAMILY
 ========================= */
 
 loadCategory(
-`https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}&with_genres=16,10751`,
+`${tmdbUrl("/discover/tv?with_genres=16,10751")}`,
 "familyRow"
 );
 
@@ -270,7 +276,7 @@ DISNEY
 ========================= */
 
 loadCategory(
-`https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&query=Disney`,
+`${tmdbUrl("/search/tv?query=Disney")}`,
 "disneyRow"
 );
 
@@ -279,7 +285,7 @@ CARTOON NETWORK
 ========================= */
 
 loadCategory(
-`https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&query=Cartoon`,
+`${tmdbUrl("/search/tv?query=Cartoon")}`,
 "cnRow"
 );
 
@@ -288,7 +294,7 @@ NICKELODEON
 ========================= */
 
 loadCategory(
-`https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&query=Nickelodeon`,
+`${tmdbUrl("/search/tv?query=Nickelodeon")}`,
 "nickRow"
 );
 
@@ -298,7 +304,7 @@ COMEDY
 ========================= */
 
 loadCategory(
-`https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}&with_genres=16,35`,
+`${tmdbUrl("/discover/tv?with_genres=16,35")}`,
 "comedyRow"
 );
 
@@ -307,7 +313,7 @@ SUPERHERO
 ========================= */
 
 loadCategory(
-`https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&query=Superhero`,
+`${tmdbUrl("/search/tv?query=Superhero")}`,
 "superheroRow"
 );
 
@@ -316,7 +322,7 @@ SCI-FI
 ========================= */
 
 loadCategory(
-`https://api.themoviedb.org/3/discover/tv?api_key=${TMDB_API_KEY}&with_genres=16,10765`,
+`${tmdbUrl("/discover/tv?with_genres=16,10765")}`,
 "scifiRow"
 );
 
@@ -328,7 +334,7 @@ async function loadCartoonMovies(){
 
 const res =
 await fetch(
-`https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_genres=16&sort_by=popularity.desc`
+`${tmdbUrl("/discover/movie?with_genres=16?sort_by=popularity.desc")}`
 );
 
 const data =
