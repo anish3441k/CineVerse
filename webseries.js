@@ -194,7 +194,10 @@ function createSeriesCard(series){
 
 return `
 
-<div class="card">
+<div
+class="card"
+onclick="openSeries(${series.id})"
+>
 
 <img
 src="https://image.tmdb.org/t/p/w500${series.poster_path}"
@@ -205,7 +208,11 @@ alt="${series.name}"
 
 <h3>${series.name}</h3>
 
-<p>${series.vote_average ? `⭐ ${series.vote_average}` : ""}</p>
+<p>
+
+${series.vote_average ? `⭐ ${series.vote_average}` : ""}
+
+</p>
 
 </div>
 
@@ -393,3 +400,14 @@ console.log(err);
 }
 
 loadUpcomingSeries();
+
+/* =========================
+   OPEN SERIES DETAIL
+========================= */
+
+function openSeries(id){
+
+window.location.href =
+`series-detail.html?id=${id}`;
+
+}

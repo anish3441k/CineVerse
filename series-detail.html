@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CineVerse | Web Series Detail</title>
+
+  <link rel="stylesheet" href="series-detail.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="series-detail-page">
+
+  <!-- Dynamic Backdrop -->
+  <div class="detail-backdrop" id="detailBackdrop"></div>
+  <div class="detail-overlay"></div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+      <div class="sidebar-logo" onclick="goHome()">🎬 CineVerse</div>
+    </div>
+
+    <div class="sidebar-links">
+      <button onclick="navigateAndClose('index.html')">🏠 Home</button>
+      <button onclick="navigateAndClose('movies.html')">🎬 Movies</button>
+      <button onclick="navigateAndClose('webseries.html')">📺 Web Series</button>
+      <button onclick="navigateAndClose('anime.html')">🎌 Anime</button>
+      <button onclick="navigateAndClose('cartoons.html')">🧸 Cartoons</button>
+      <button onclick="navigateAndClose('games.html')">🎮 Games</button>
+
+      <div class="sidebar-divider"></div>
+
+      <button onclick="navigateAndClose('wishlist.html')">❤️ Wishlist</button>
+      <button onclick="navigateAndClose('settings.html')">⚙️ Settings</button>
+    </div>
+  </aside>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <div class="logo" onclick="goHome()">CineVerse</div>
+    </div>
+
+    <div class="search-box">
+      <input type="text" id="globalSearchInput" placeholder="Search movies, web series, anime..." />
+    </div>
+
+    <div class="auth">
+      <button class="login-btn">Login</button>
+      <button class="signup-btn">Signup</button>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="detail-container">
+
+    <!-- HERO -->
+    <section class="hero-section">
+      <div class="poster-column">
+        <div class="poster-card">
+          <img id="seriesPoster" src="" alt="Web Series Poster" />
+        </div>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-meta-top">
+          <span class="badge">Web Series</span>
+          <span class="meta-dot">•</span>
+          <span id="seriesFirstYear">----</span>
+          <span class="meta-dot">•</span>
+          <span id="seriesSeasonsMeta">-- Seasons</span>
+          <span class="meta-dot">•</span>
+          <span id="seriesEpisodesMeta">-- Episodes</span>
+          <span class="meta-dot">•</span>
+          <span id="seriesStatusMeta">Status</span>
+        </div>
+
+        <h1 id="seriesTitle">Loading...</h1>
+        <p class="tagline" id="seriesTagline">Series tagline will appear here.</p>
+
+        <div class="rating-row">
+          <div class="rating-pill">⭐ <span id="seriesRating">0.0</span>/10</div>
+          <div class="vote-pill"><span id="seriesVotes">0</span> votes</div>
+        </div>
+
+        <div class="genre-row" id="seriesGenres"></div>
+
+        <p class="overview" id="seriesOverview">
+          Loading web series overview...
+        </p>
+
+        <div class="hero-actions">
+          <button class="primary-btn" id="watchNowBtn">▶ Watch Now</button>
+          <button class="secondary-btn" id="wishlistBtn">♡ Add to Wishlist</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 CARD STRIP -->
+    <section class="info-strip">
+      <div class="info-card">
+        <span class="info-label">Awards Won</span>
+        <span class="info-value" id="seriesAwardsWon">--</span>
+      </div>
+      <div class="info-card">
+        <span class="info-label">Nominations</span>
+        <span class="info-value" id="seriesNominations">--</span>
+      </div>
+      <div class="info-card">
+        <span class="info-label">Seasons</span>
+        <span class="info-value" id="seriesSeasons">--</span>
+      </div>
+      <div class="info-card">
+        <span class="info-label">Episodes</span>
+        <span class="info-value" id="seriesEpisodes">--</span>
+      </div>
+    </section>
+
+    <!-- TRAILER -->
+    <section class="content-section">
+      <div class="section-header">
+        <h2>🎬 Trailer</h2>
+      </div>
+      <div class="trailer-box" id="trailerBox">
+        <div class="trailer-placeholder">Trailer will load here</div>
+      </div>
+    </section>
+
+    <!-- WHERE TO WATCH -->
+    <section class="content-section">
+      <div class="section-header">
+        <h2>📺 Where to Watch</h2>
+      </div>
+      <div class="providers-grid" id="watchProviders">
+        <div class="empty-state">Streaming / rent / buy platforms will appear here.</div>
+      </div>
+    </section>
+
+    <!-- IMPORTANT CREW -->
+    <section class="content-section">
+      <div class="section-header">
+        <h2>🎞 Important Crew</h2>
+      </div>
+      <div class="crew-grid" id="importantCrew">
+        <div class="empty-state">Crew info will appear here.</div>
+      </div>
+    </section>
+
+    <!-- TOP CAST -->
+    <section class="content-section">
+      <div class="section-header">
+        <h2>🌟 Top Cast</h2>
+      </div>
+      <div class="cast-grid" id="topCast">
+        <div class="empty-state">Cast will appear here.</div>
+      </div>
+    </section>
+
+    <!-- SCREENSHOTS -->
+    <section class="content-section">
+      <div class="section-header">
+        <h2>🖼 Screenshots</h2>
+      </div>
+      <div class="screenshots-grid" id="screenshotsGrid">
+        <div class="empty-state">Screenshots will appear here.</div>
+      </div>
+    </section>
+
+    <!-- SIMILAR SERIES -->
+    <section class="content-section">
+      <div class="section-header">
+        <h2>🍿 Similar Web Series</h2>
+      </div>
+      <div class="similar-grid" id="similarSeries">
+        <div class="empty-state">Similar web series will appear here.</div>
+      </div>
+    </section>
+
+    <!-- RATE & REVIEW -->
+    <section class="content-section review-section">
+      <div class="section-header">
+        <h2>✍️ Rate & Review</h2>
+      </div>
+
+      <div class="review-form-card">
+        <div class="review-meter-block">
+          <label>How would you rate this web series?</label>
+
+          <div class="meter-options">
+            <button class="meter-btn" data-value="worst">😖 Worst</button>
+            <button class="meter-btn" data-value="average">😐 Average</button>
+            <button class="meter-btn" data-value="good">🙂 Good</button>
+            <button class="meter-btn" data-value="super">🔥 Super</button>
+          </div>
+        </div>
+
+        <div class="review-text-block">
+          <label for="userReview">Write a Review</label>
+          <textarea id="userReview" placeholder="What did you think about this web series?"></textarea>
+        </div>
+
+        <button class="primary-btn small-btn" id="submitReviewBtn">Submit Review</button>
+      </div>
+    </section>
+
+    <!-- USER REVIEWS -->
+    <section class="content-section">
+      <div class="section-header">
+        <h2>📝 User Reviews</h2>
+      </div>
+
+      <div class="user-reviews-list" id="userReviewsList">
+        <div class="review-card">
+          <div class="review-card-top">
+            <strong>Guest User</strong>
+            <span class="review-meter-tag good">Good</span>
+          </div>
+          <p>This is a sample review block for layout preview.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="series-detail.js"></script>
+</body>
+</html>

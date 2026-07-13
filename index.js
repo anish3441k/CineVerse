@@ -302,29 +302,82 @@ updateHero();
    CARD CREATOR
 ========================= */
 
-function createCard(item){
+function createMovieCard(movie){
 
-    return `
-    <div class="card">
+return `
 
-        <img
-        src="https://image.tmdb.org/t/p/w500${item.poster_path}"
-        >
+<div
+class="card"
+onclick="openMovie(${movie.id})"
+>
 
-        <div class="card-info">
+<img
+src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
+>
 
-            <h3>
-            ${item.title || item.name}
-            </h3>
+<div class="card-info">
 
-            <p>
-            ⭐ ${item.vote_average.toFixed(1)}
-            </p>
+<h3>${movie.title}</h3>
 
-        </div>
+<p>⭐ ${movie.vote_average.toFixed(1)}</p>
 
-    </div>
-    `;
+</div>
+
+</div>
+
+`;
+
+}
+
+function createSeriesCard(series){
+
+return `
+
+<div
+class="card"
+onclick="openSeries(${series.id})"
+>
+
+<img
+src="https://image.tmdb.org/t/p/w500${series.poster_path}"
+>
+
+<div class="card-info">
+
+<h3>${series.name}</h3>
+
+<p>⭐ ${series.vote_average.toFixed(1)}</p>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+function createAnimeCard(anime){
+
+return `
+
+<div
+class="card"
+onclick="openAnime(${anime.mal_id})"
+>
+
+<img src="${anime.images.jpg.image_url}">
+
+<div class="card-info">
+
+<h3>${anime.title}</h3>
+
+<p>⭐ ${anime.score || "N/A"}</p>
+
+</div>
+
+</div>
+
+`;
 
 }
 
@@ -350,7 +403,7 @@ async function loadMovies(){
     row.innerHTML =
     data.results
     .slice(0,10)
-    .map(createCard)
+    .map(createMovieCard)
     .join("");
 
 }
@@ -377,7 +430,7 @@ async function loadSeries(){
     row.innerHTML =
     data.results
     .slice(0,10)
-    .map(createCard)
+    .map(createSeriesCard)
     .join("");
 
 }
@@ -406,8 +459,7 @@ async function loadAnime(){
     row.innerHTML =
     data.data
     .slice(0,10)
-    .map(anime=>`
-
+    .map(createAnimeCard)
     <div class="card">
 
         <img src="${anime.images.jpg.image_url}">
@@ -752,5 +804,30 @@ musiciansRow.innerHTML += `
 `;
 
 });
+
+}
+
+/* =========================
+   OPEN DETAIL PAGES
+========================= */
+
+function openMovie(id){
+
+window.location.href =
+`movie-detail.html?id=${id}`;
+
+}
+
+function openSeries(id){
+
+window.location.href =
+`series-detail.html?id=${id}`;
+
+}
+
+function openAnime(id){
+
+window.location.href =
+`anime-detail.html?id=${id}&type=series`;
 
 }

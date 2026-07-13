@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CineVerse | Movie Detail</title>
+
+  <link rel="stylesheet" href="movie-detail.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="movie-detail-page">
+
+  <!-- Background -->
+  <div class="detail-backdrop" id="detailBackdrop"></div>
+  <div class="detail-overlay"></div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+      <div class="sidebar-logo" onclick="goHome()">🎬 CineVerse</div>
+    </div>
+
+    <div class="sidebar-links">
+      <button onclick="navigateAndClose('index.html')">🏠 Home</button>
+      <button onclick="navigateAndClose('movies.html')">🎬 Movies</button>
+      <button onclick="navigateAndClose('webseries.html')">📺 Web Series</button>
+      <button onclick="navigateAndClose('anime.html')">🎌 Anime</button>
+      <button onclick="navigateAndClose('cartoons.html')">🧸 Cartoons</button>
+      <button onclick="navigateAndClose('games.html')">🎮 Games</button>
+
+      <div class="sidebar-divider"></div>
+
+      <button onclick="navigateAndClose('wishlist.html')">❤️ Wishlist</button>
+      <button onclick="navigateAndClose('settings.html')">⚙️ Settings</button>
+    </div>
+  </aside>
+
+  <!-- Sidebar overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <div class="menu-btn" id="menuBtn" onclick="toggleSidebar()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+
+      <div class="logo" onclick="goHome()">CineVerse</div>
+    </div>
+
+    <div class="search-box">
+      <input type="text" id="globalSearchInput" placeholder="Search movies, web series, anime..." />
+    </div>
+
+    <div class="auth">
+      <button class="login-btn">Login</button>
+      <button class="signup-btn">Signup</button>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="detail-container">
+
+    <!-- HERO -->
+    <section class="hero-section">
+      <div class="poster-column">
+        <div class="poster-card">
+          <img id="moviePoster" src="" alt="Movie Poster" />
+        </div>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-meta-top">
+          <span class="badge" id="movieTypeBadge">Movie</span>
+          <span class="meta-dot">•</span>
+          <span id="movieReleaseYear">----</span>
+          <span class="meta-dot">•</span>
+          <span id="movieRuntime">-- min</span>
+          <span class="meta-dot">•</span>
+          <span id="movieCertification">UA</span>
+        </div>
+
+        <h1 id="movieTitle">Loading...</h1>
+        <p class="tagline" id="movieTagline">Movie tagline will appear here.</p>
+
+        <div class="rating-row">
+          <div class="rating-pill">⭐ <span id="movieRating">0.0</span>/10</div>
+          <div class="vote-pill"><span id="movieVotes">0</span> votes</div>
+        </div>
+
+        <div class="genre-row" id="movieGenres"></div>
+
+        <p class="overview" id="movieOverview">
+          Loading movie overview...
+        </p>
+
+        <div class="hero-actions">
+          <button class="primary-btn" id="watchNowBtn">▶ Watch Now</button>
+          <button class="secondary-btn" id="wishlistBtn">♡ Add to Wishlist</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- INFO STRIP -->
+    <section class="info-strip">
+      <div class="info-card">
+        <span class="info-label">Oscar Wins</span>
+        <span class="info-value" id="oscarWins">--</span>
+      </div>
+      <div class="info-card">
+        <span class="info-label">Oscar Nominations</span>
+        <span class="info-value" id="oscarNominations">--</span>
+      </div>
+      <div class="info-card">
+        <span class="info-label">Budget</span>
+        <span class="info-value" id="movieBudget">--</span>
+      </div>
+      <div class="info-card">
+        <span class="info-label">Box Office</span>
+        <span class="info-value" id="movieRevenue">--</span>
+      </div>
+    </section>
+
+    <!-- TRAILER -->
+    <section class="content-section">
+      <div class="section-header">
+        <h2>🎬 Trailer</h2>
+      </div>
+      <div class="trailer-box" id="trailerBox">
+        <div class="trailer-placeholder">Trailer will load here</div>
+      </div>
+    </section>
+
+    <!-- WHERE TO WATCH -->
+    <section class="content-section">
+      <div class="section-header">
+        <h2>📺 Where to Watch</h2>
+      </div>
+      <div class="providers-grid" id="watchProviders">
+        <div class="empty-state">Streaming / rent / buy platforms will appear here.</div>
+      </div>
+    </section>
+
+    <!-- IMPORTANT CREW -->
+    <section class="content-section">
+      <div class="section-header">
+        <h2>🎞 Important Crew</h2>
+      </div>
+      <div class="crew-grid" id="importantCrew">
+        <div class="empty-state">Crew info will appear here.</div>
+      </div>
+    </section>
+
+    <!-- TOP CAST -->
+    <section class="content-section">
+      <div class="section-header">
+        <h2>🌟 Top Cast</h2>
+      </div>
+      <div class="cast-grid" id="topCast">
+        <div class="empty-state">Cast will appear here.</div>
+      </div>
+    </section>
+
+    <!-- SCREENSHOTS -->
+    <section class="content-section">
+      <div class="section-header">
+        <h2>🖼 Screenshots</h2>
+      </div>
+      <div class="screenshots-grid" id="screenshotsGrid">
+        <div class="empty-state">Screenshots will appear here.</div>
+      </div>
+    </section>
+
+    <!-- SIMILAR -->
+    <section class="content-section">
+      <div class="section-header">
+        <h2>🍿 Similar Movies</h2>
+      </div>
+      <div class="similar-grid" id="similarMovies">
+        <div class="empty-state">Similar movies will appear here.</div>
+      </div>
+    </section>
+
+    <!-- RATE & REVIEW -->
+    <section class="content-section review-section">
+      <div class="section-header">
+        <h2>✍️ Rate & Review</h2>
+      </div>
+
+      <div class="review-form-card">
+        <div class="review-meter-block">
+          <label>How would you rate this movie?</label>
+
+          <div class="meter-options" id="meterOptions">
+            <button class="meter-btn" data-value="worst">😖 Worst</button>
+            <button class="meter-btn" data-value="average">😐 Average</button>
+            <button class="meter-btn" data-value="good">🙂 Good</button>
+            <button class="meter-btn" data-value="super">🔥 Super</button>
+          </div>
+        </div>
+
+        <div class="review-text-block">
+          <label for="userReview">Write a Review</label>
+          <textarea id="userReview" placeholder="What did you think about this movie?"></textarea>
+        </div>
+
+        <button class="primary-btn small-btn" id="submitReviewBtn">Submit Review</button>
+      </div>
+    </section>
+
+    <!-- USER REVIEWS -->
+    <section class="content-section">
+      <div class="section-header">
+        <h2>📝 User Reviews</h2>
+      </div>
+
+      <div class="user-reviews-list" id="userReviewsList">
+        <div class="review-card">
+          <div class="review-card-top">
+            <strong>Guest User</strong>
+            <span class="review-meter-tag good">Good</span>
+          </div>
+          <p>Loved the visuals and emotional depth. This is a sample review block for layout preview.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="movie-detail.js"></script>
+</body>
+</html>

@@ -63,6 +63,7 @@ type:ANIME,
 sort:TRENDING_DESC
 ){
 
+id
 title{
 romaji
 english
@@ -200,12 +201,14 @@ heroAnime.forEach(anime=>{
 
 row.innerHTML += `
 
-<div class="card">
+<div
+class="card"
+onclick="openAnime(${anime.id})"
+>
 
 <img src="${anime.coverImage.large}">
 
 <div class="card-info">
-
 <h3>
 ${anime.title.english || anime.title.romaji}
 </h3>
@@ -254,6 +257,7 @@ genre:"${genre}",
 sort:POPULARITY_DESC
 ){
 
+id
 title{
 romaji
 english
@@ -304,7 +308,10 @@ if(!row) return;
 row.innerHTML =
 data.data.Page.media.map(anime=>`
 
-<div class="card">
+<div
+class="card"
+onclick="openAnime(${anime.id})"
+>
 
 <img src="${anime.coverImage.large}">
 
@@ -391,6 +398,8 @@ format:MOVIE,
 sort:POPULARITY_DESC
 ){
 
+id
+
 title{
 romaji
 english
@@ -440,7 +449,10 @@ if(!row) return;
 row.innerHTML =
 data.data.Page.media.map(anime=>`
 
-<div class="card">
+<div
+class="card"
+onclick="openAnime(${anime.id})"
+>
 
 <img src="${anime.coverImage.large}">
 
@@ -480,6 +492,7 @@ type:ANIME,
 sort:SCORE_DESC
 ){
 
+id
 title{
 romaji
 english
@@ -524,7 +537,10 @@ if(!row) return;
 row.innerHTML =
 data.data.Page.media.map(anime=>`
 
-<div class="card">
+<div
+class="card"
+onclick="openAnime(${anime.id})"
+>
 
 <img src="${anime.coverImage.large}">
 
@@ -558,3 +574,21 @@ loadTopRatedAnime();
 
 console.log("Top Rated Row:", document.getElementById("topRatedRow"));
 console.log("School Row:", document.getElementById("schoolRow"));
+
+/* =========================
+   OPEN ANIME DETAIL
+========================= */
+
+function openAnime(id){
+
+window.location.href =
+`anime-detail.html?id=${id}&type=series`;
+
+}
+
+function openAnimeMovie(id){
+
+window.location.href =
+`anime-detail.html?id=${id}&type=movie`;
+
+}

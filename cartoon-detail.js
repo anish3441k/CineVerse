@@ -1,0 +1,1 @@
+// cartoon detail page logic
