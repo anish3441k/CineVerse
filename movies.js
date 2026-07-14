@@ -369,7 +369,6 @@ loadCategory(
 
 function openMovie(id){
 
-window.location.href =
-`movie-detail.html?id=${id}`;
+alert("Movie Clicked: " + id);
 
 }
